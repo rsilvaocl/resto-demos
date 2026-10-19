@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Panel · Confitería Constanza</title>
+<style>
+body{font-family:Inter,system-ui,sans-serif;background:#0c0e12;color:#e9ecf1;margin:0;padding:22px;line-height:1.5}
+.wrap{max-width:720px;margin:0 auto}
+.kick{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#6b7280;margin-bottom:8px}
+h1{font-size:25px;margin:0 0 6px;font-weight:700;letter-spacing:-.02em}
+.sub{color:#8b93a1;font-size:13px;margin-bottom:26px}
+.box{background:#14171d;border:1px solid #232833;border-radius:16px;padding:16px;margin-bottom:14px}
+h2{font-size:10.5px;text-transform:uppercase;letter-spacing:.14em;color:#7c8494;margin:0 0 10px;font-weight:600}
+.row{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid #1e222b}
+.row:last-child{border:0}
+.row .n{flex:1;font-size:14px}
+input[type=number]{width:112px;background:#0c0e12;color:#e9ecf1;border:1px solid #2a303c;border-radius:9px;
+  padding:8px 10px;font-size:14px;text-align:right;font-family:inherit}
+button{background:#3b82f6;color:#fff;border:0;padding:12px 18px;border-radius:11px;font-weight:600;
+  font-size:14px;cursor:pointer;font-family:inherit}
+button.sec{background:#1d222c;color:#c9cfda}
+button:active{transform:scale(.98)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.ok{color:#34d399;font-size:13px;margin-top:12px;min-height:18px}
+</style></head><body><div class="wrap">
+<div class="kick">Panel del local</div>
+<h1>Confitería Constanza</h1>
+<div class="sub">Cambie precios y disponibilidad sin depender de nadie.</div>
+<div id="app"></div>
+<div class="actions">
+  <button onclick="guardar()">Guardar cambios</button>
+  <button class="sec" onclick="exportar()">Descargar carta</button>
+  <button class="sec" onclick="location.href='index.html'">Ver carta</button>
+</div>
+<div class="ok" id="ok"></div>
+<script>
+const DATA = {"slug": "confiteria-constanza", "nombre": "Confitería Constanza", "tipo": "Confitería y pastelería", "rating": "4.5", "direccion": "Av. Macul 4067, Macul", "telefono": "", "wa_display": "Pedidos por Instagram", "comuna": "Macul", "minutos": "Por encargo", "horarios": {"lun": [9, 19], "mar": [9, 19], "mie": [9, 19], "jue": [9, 19], "vie": [9, 20], "sab": [9, 20], "dom": null}, "tema": {"bg": "#15110d", "card": "#201a14", "acento": "#c9a227", "acento2": "#efd9a0", "texto": "#f9f3e6", "fuente": "Fraunces", "hero": "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=1400&q=70"}, "lema": "Dulces de siempre, recién hechos", "categorias": [{"n": "Tortas enteras", "items": [{"n": "Torta de chocolate", "d": "12 porciones, ganache", "p": 23900}, {"n": "Torta de frambuesa", "d": "12 porciones, crema y fruta", "p": 25900}, {"n": "Torta de manjar y nuez", "d": "12 porciones, receta de la casa", "p": 24900}]}, {"n": "Confitería surtida", "items": [{"n": "Caja de surtidos 500 g", "d": "Surtido de la casa", "p": 9900}, {"n": "Alfajores de maicena (6u)", "d": "Manjar casero", "p": 4900}, {"n": "Cuadrados de manjar", "d": "Por kilo", "p": 12900}]}, {"n": "Porciones", "items": [{"n": "Cheesecake de maracuyá", "d": "Base de galleta", "p": 3900}, {"n": "Pie de limón", "d": "Merengue italiano", "p": 3600}, {"n": "Brazo de reina", "d": "Manjar y crema", "p": 3400}]}, {"n": "Encargos", "items": [{"n": "Torta personalizada", "d": "Diseño a pedido, 48 horas", "p": 29900}, {"n": "Mesa dulce 20 personas", "d": "Surtido de porciones y dulces", "p": 49900}]}, {"n": "Cafetería", "items": [{"n": "Espresso", "d": "Doble shot", "p": 1900}, {"n": "Latte", "d": "Leche texturizada", "p": 2700}, {"n": "Capuccino", "d": "Espuma cremosa", "p": 2600}]}]};
+const KEY = "admin_"+DATA.slug;
+const saved = JSON.parse(localStorage.getItem(KEY)||"null");
+if(saved){ DATA.categorias = saved; }
+document.getElementById("app").innerHTML = DATA.categorias.map((c,ci)=>`
+  <div class="box"><h2>${c.n}</h2>
+  ${c.items.map((it,ii)=>`<div class="row">
+      <span class="n">${it.n}</span>
+      <input type="number" value="${it.p}" step="100" onchange="setP(${ci},${ii},this.value)">
+    </div>`).join("")}</div>`).join("");
+function setP(ci,ii,v){ DATA.categorias[ci].items[ii].p = Number(v)||0; }
+function guardar(){
+  localStorage.setItem(KEY, JSON.stringify(DATA.categorias));
+  document.getElementById("ok").textContent = "Cambios guardados en este dispositivo ✓";
+}
+function exportar(){
+  const blob = new Blob([JSON.stringify(DATA,null,2)],{type:"application/json"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = DATA.slug + ".json"; a.click();
+}
+</script></div></body></html>

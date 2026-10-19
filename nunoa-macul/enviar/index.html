@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Panel · Ñuñoa y Macul</title>
+<meta name="theme-color" content="#08090c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:Inter,system-ui,sans-serif;background:#08090c;color:#eef1f5;margin:0;
+  padding:0 16px 70px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:640px;margin:0 auto}
+header{position:sticky;top:0;z-index:10;background:rgba(8,9,12,.93);backdrop-filter:blur(14px);
+  padding:16px 0 12px;border-bottom:1px solid #1c2028;margin-bottom:18px}
+.k{font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#5f6673;margin-bottom:7px}
+h1{font-size:23px;margin:0;letter-spacing:-.02em}
+.count{font-size:12px;color:#8b93a1;margin-top:5px}
+.count b{color:#3ddc84}
+h2{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#6b7280;margin:26px 0 10px;font-weight:600}
+.card{background:#111318;border:1px solid #1f232c;border-radius:16px;padding:16px;margin-bottom:10px;transition:.2s}
+.card.done{opacity:.45}.card.done .tick{opacity:1;transform:scale(1)}
+.card.off{opacity:.55;border-style:dashed;background:#0d0f13}
+.row1{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.tick{width:22px;height:22px;border-radius:50%;background:#1d3a28;color:#3ddc84;font-size:12px;
+  display:grid;place-items:center;opacity:0;transform:scale(.6);transition:.2s;flex:none;font-weight:700}
+.n{font-weight:700;font-size:15.5px;letter-spacing:-.01em}
+.m{font-size:11.5px;color:#8b93a1;margin-top:2px}
+.go{display:block;text-align:center;margin-top:13px;padding:13px;border-radius:11px;background:#25d366;
+  color:#04140c;font-size:14px;font-weight:800;text-decoration:none;border:0;width:100%;
+  font-family:inherit;cursor:pointer}
+.go:active{transform:scale(.99)}
+.go.ghost{background:#1d222c;color:#c9cfda;font-weight:600;font-size:13px}
+.sub{display:flex;gap:16px;margin-top:11px;font-size:11.5px}
+.sub a,.sub button{color:#5f6673;text-decoration:none;background:none;border:0;padding:0;
+  font-family:inherit;font-size:11.5px;cursor:pointer}
+.sub button:hover,.sub a:hover{color:#8b93a1}
+.preview{display:none;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,monospace;
+  font-size:11px;line-height:1.65;color:#8b93a1;background:#0b0d11;border:1px solid #1c2028;
+  border-radius:10px;padding:12px;margin:11px 0 0;overflow-x:auto}
+.preview.on{display:block}
+.note{font-size:11px;color:#4c525d;line-height:1.9;margin-top:28px;border-top:1px solid #1c2028;padding-top:16px}
+.note b{color:#6b7280}
+.reset{background:none;border:0;color:#4c525d;font-size:10.5px;text-decoration:underline;
+  padding:0;margin-top:14px;font-family:inherit;cursor:pointer}
+</style></head>
+<body><div class="wrap">
+
+<header>
+  <div class="k">Salida a terreno</div>
+  <h1>Ñuñoa y Macul</h1>
+  <div class="count"><b id="hechos">0</b> de 6 enviados por WhatsApp</div>
+</header>
+
+<h2>Con teléfono · toque y se abre WhatsApp</h2>
+<article class="card" data-k="gulerie-pasteleria-cafeteria" data-d="{&quot;slug&quot;: &quot;gulerie-pasteleria-cafeteria&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, trabajo con locales de \u00d1u\u00f1oa y Macul.\n\nVi *Gulerie Pasteler\u00eda &amp; Cafeter\u00eda* y no encontr\u00e9 d\u00f3nde ver todo con precios y pedir sin escribir mensaje por mensaje.\n\nLe arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: sus productos con foto y precio, y el pedido llegando ordenado a su WhatsApp con nombre, direcci\u00f3n y total.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/nunoa-macul/gulerie-pasteleria-cafeteria/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Gulerie Pasteler\u00eda &amp; Cafeter\u00eda&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Gulerie Pastelería &amp; Cafetería</div>
+      <div class="m">Pastelería y cafetería · ★ 4.8</div>
+      <div class="m">Dublé Almeyda 3141, Ñuñoa</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <a class="go" href="https://wa.me/56976314273?text=Hola%2C%20buenas%20tardes.%20Soy%20Rub%C3%A9n%2C%20trabajo%20con%20locales%20de%20%C3%91u%C3%B1oa%20y%20Macul.%0A%0AVi%20%2AGulerie%20Pasteler%C3%ADa%20%26%20Cafeter%C3%ADa%2A%20y%20no%20encontr%C3%A9%20d%C3%B3nde%20ver%20todo%20con%20precios%20y%20pedir%20sin%20escribir%20mensaje%20por%20mensaje.%0A%0ALe%20arm%C3%A9%20una%20muestra%20de%20c%C3%B3mo%20se%20ver%C3%ADa%3A%20sus%20productos%20con%20foto%20y%20precio%2C%20y%20el%20pedido%20llegando%20ordenado%20a%20su%20WhatsApp%20con%20nombre%2C%20direcci%C3%B3n%20y%20total.%0A%0AM%C3%ADrela%20ac%C3%A1%3A%20https%3A//rsilvaocl.github.io/resto-demos/nunoa-macul/gulerie-pasteleria-cafeteria/%0A%0ASi%20le%20sirve%2C%20paso%205%20minutos%20y%20le%20explico.%20Si%20no%2C%20no%20le%20quito%20m%C3%A1s%20tiempo." target="_blank" rel="noopener">Enviar por WhatsApp</a>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/nunoa-macul/gulerie-pasteleria-cafeteria/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, trabajo con locales de Ñuñoa y Macul.
+
+Vi *Gulerie Pastelería &amp; Cafetería* y no encontré dónde ver todo con precios y pedir sin escribir mensaje por mensaje.
+
+Le armé una muestra de cómo se vería: sus productos con foto y precio, y el pedido llegando ordenado a su WhatsApp con nombre, dirección y total.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/nunoa-macul/gulerie-pasteleria-cafeteria/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article><article class="card" data-k="panaderia-el-bodegon" data-d="{&quot;slug&quot;: &quot;panaderia-el-bodegon&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, trabajo con locales de \u00d1u\u00f1oa y Macul.\n\nVi *Panader\u00eda El Bodeg\u00f3n* y no encontr\u00e9 d\u00f3nde ver todo con precios y pedir sin escribir mensaje por mensaje.\n\nLe arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: sus productos con foto y precio, y el pedido llegando ordenado a su WhatsApp con nombre, direcci\u00f3n y total.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/nunoa-macul/panaderia-el-bodegon/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Panader\u00eda El Bodeg\u00f3n&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Panadería El Bodegón</div>
+      <div class="m">Panadería y pastelería · ★ 4.5</div>
+      <div class="m">Av. Macul 4244, Macul</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <a class="go" href="https://wa.me/56931093956?text=Hola%2C%20buenas%20tardes.%20Soy%20Rub%C3%A9n%2C%20trabajo%20con%20locales%20de%20%C3%91u%C3%B1oa%20y%20Macul.%0A%0AVi%20%2APanader%C3%ADa%20El%20Bodeg%C3%B3n%2A%20y%20no%20encontr%C3%A9%20d%C3%B3nde%20ver%20todo%20con%20precios%20y%20pedir%20sin%20escribir%20mensaje%20por%20mensaje.%0A%0ALe%20arm%C3%A9%20una%20muestra%20de%20c%C3%B3mo%20se%20ver%C3%ADa%3A%20sus%20productos%20con%20foto%20y%20precio%2C%20y%20el%20pedido%20llegando%20ordenado%20a%20su%20WhatsApp%20con%20nombre%2C%20direcci%C3%B3n%20y%20total.%0A%0AM%C3%ADrela%20ac%C3%A1%3A%20https%3A//rsilvaocl.github.io/resto-demos/nunoa-macul/panaderia-el-bodegon/%0A%0ASi%20le%20sirve%2C%20paso%205%20minutos%20y%20le%20explico.%20Si%20no%2C%20no%20le%20quito%20m%C3%A1s%20tiempo." target="_blank" rel="noopener">Enviar por WhatsApp</a>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/nunoa-macul/panaderia-el-bodegon/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, trabajo con locales de Ñuñoa y Macul.
+
+Vi *Panadería El Bodegón* y no encontré dónde ver todo con precios y pedir sin escribir mensaje por mensaje.
+
+Le armé una muestra de cómo se vería: sus productos con foto y precio, y el pedido llegando ordenado a su WhatsApp con nombre, dirección y total.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/nunoa-macul/panaderia-el-bodegon/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article><article class="card" data-k="panaderia-alma-sobre-ruedas" data-d="{&quot;slug&quot;: &quot;panaderia-alma-sobre-ruedas&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, trabajo con locales de \u00d1u\u00f1oa y Macul.\n\nVi *Panader\u00eda Alma Sobre Ruedas* y no encontr\u00e9 d\u00f3nde ver todo con precios y pedir sin escribir mensaje por mensaje.\n\nLe arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: sus productos con foto y precio, y el pedido llegando ordenado a su WhatsApp con nombre, direcci\u00f3n y total.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/nunoa-macul/panaderia-alma-sobre-ruedas/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Panader\u00eda Alma Sobre Ruedas&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Panadería Alma Sobre Ruedas</div>
+      <div class="m">Panadería de masa madre · ★ 4.5</div>
+      <div class="m">Av. Macul Alto 5950, Macul</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <a class="go" href="https://wa.me/56991452652?text=Hola%2C%20buenas%20tardes.%20Soy%20Rub%C3%A9n%2C%20trabajo%20con%20locales%20de%20%C3%91u%C3%B1oa%20y%20Macul.%0A%0AVi%20%2APanader%C3%ADa%20Alma%20Sobre%20Ruedas%2A%20y%20no%20encontr%C3%A9%20d%C3%B3nde%20ver%20todo%20con%20precios%20y%20pedir%20sin%20escribir%20mensaje%20por%20mensaje.%0A%0ALe%20arm%C3%A9%20una%20muestra%20de%20c%C3%B3mo%20se%20ver%C3%ADa%3A%20sus%20productos%20con%20foto%20y%20precio%2C%20y%20el%20pedido%20llegando%20ordenado%20a%20su%20WhatsApp%20con%20nombre%2C%20direcci%C3%B3n%20y%20total.%0A%0AM%C3%ADrela%20ac%C3%A1%3A%20https%3A//rsilvaocl.github.io/resto-demos/nunoa-macul/panaderia-alma-sobre-ruedas/%0A%0ASi%20le%20sirve%2C%20paso%205%20minutos%20y%20le%20explico.%20Si%20no%2C%20no%20le%20quito%20m%C3%A1s%20tiempo." target="_blank" rel="noopener">Enviar por WhatsApp</a>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/nunoa-macul/panaderia-alma-sobre-ruedas/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, trabajo con locales de Ñuñoa y Macul.
+
+Vi *Panadería Alma Sobre Ruedas* y no encontré dónde ver todo con precios y pedir sin escribir mensaje por mensaje.
+
+Le armé una muestra de cómo se vería: sus productos con foto y precio, y el pedido llegando ordenado a su WhatsApp con nombre, dirección y total.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/nunoa-macul/panaderia-alma-sobre-ruedas/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article><article class="card" data-k="amasanderia-el-huaso-tito" data-d="{&quot;slug&quot;: &quot;amasanderia-el-huaso-tito&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, trabajo con locales de \u00d1u\u00f1oa y Macul.\n\nVi *Amasander\u00eda El Huaso Tito* y no encontr\u00e9 d\u00f3nde ver todo con precios y pedir sin escribir mensaje por mensaje.\n\nLe arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: sus productos con foto y precio, y el pedido llegando ordenado a su WhatsApp con nombre, direcci\u00f3n y total.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/nunoa-macul/amasanderia-el-huaso-tito/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Amasander\u00eda El Huaso Tito&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Amasandería El Huaso Tito</div>
+      <div class="m">Amasandería tradicional · ★ 4.7</div>
+      <div class="m">Exequiel Fernández 4285, Macul</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <a class="go" href="https://wa.me/56935809161?text=Hola%2C%20buenas%20tardes.%20Soy%20Rub%C3%A9n%2C%20trabajo%20con%20locales%20de%20%C3%91u%C3%B1oa%20y%20Macul.%0A%0AVi%20%2AAmasander%C3%ADa%20El%20Huaso%20Tito%2A%20y%20no%20encontr%C3%A9%20d%C3%B3nde%20ver%20todo%20con%20precios%20y%20pedir%20sin%20escribir%20mensaje%20por%20mensaje.%0A%0ALe%20arm%C3%A9%20una%20muestra%20de%20c%C3%B3mo%20se%20ver%C3%ADa%3A%20sus%20productos%20con%20foto%20y%20precio%2C%20y%20el%20pedido%20llegando%20ordenado%20a%20su%20WhatsApp%20con%20nombre%2C%20direcci%C3%B3n%20y%20total.%0A%0AM%C3%ADrela%20ac%C3%A1%3A%20https%3A//rsilvaocl.github.io/resto-demos/nunoa-macul/amasanderia-el-huaso-tito/%0A%0ASi%20le%20sirve%2C%20paso%205%20minutos%20y%20le%20explico.%20Si%20no%2C%20no%20le%20quito%20m%C3%A1s%20tiempo." target="_blank" rel="noopener">Enviar por WhatsApp</a>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/nunoa-macul/amasanderia-el-huaso-tito/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, trabajo con locales de Ñuñoa y Macul.
+
+Vi *Amasandería El Huaso Tito* y no encontré dónde ver todo con precios y pedir sin escribir mensaje por mensaje.
+
+Le armé una muestra de cómo se vería: sus productos con foto y precio, y el pedido llegando ordenado a su WhatsApp con nombre, dirección y total.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/nunoa-macul/amasanderia-el-huaso-tito/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article><article class="card" data-k="michis-cake" data-d="{&quot;slug&quot;: &quot;michis-cake&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, trabajo con locales de \u00d1u\u00f1oa y Macul.\n\nVi *Michis Cake* y no encontr\u00e9 d\u00f3nde ver todo con precios y pedir sin escribir mensaje por mensaje.\n\nLe arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: sus productos con foto y precio, y el pedido llegando ordenado a su WhatsApp con nombre, direcci\u00f3n y total.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/nunoa-macul/michis-cake/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Michis Cake&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Michis Cake</div>
+      <div class="m">Pastelería y tortas · ★ 4.6</div>
+      <div class="m">Av. Marathón 3771, Macul</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <a class="go" href="https://wa.me/56933562874?text=Hola%2C%20buenas%20tardes.%20Soy%20Rub%C3%A9n%2C%20trabajo%20con%20locales%20de%20%C3%91u%C3%B1oa%20y%20Macul.%0A%0AVi%20%2AMichis%20Cake%2A%20y%20no%20encontr%C3%A9%20d%C3%B3nde%20ver%20todo%20con%20precios%20y%20pedir%20sin%20escribir%20mensaje%20por%20mensaje.%0A%0ALe%20arm%C3%A9%20una%20muestra%20de%20c%C3%B3mo%20se%20ver%C3%ADa%3A%20sus%20productos%20con%20foto%20y%20precio%2C%20y%20el%20pedido%20llegando%20ordenado%20a%20su%20WhatsApp%20con%20nombre%2C%20direcci%C3%B3n%20y%20total.%0A%0AM%C3%ADrela%20ac%C3%A1%3A%20https%3A//rsilvaocl.github.io/resto-demos/nunoa-macul/michis-cake/%0A%0ASi%20le%20sirve%2C%20paso%205%20minutos%20y%20le%20explico.%20Si%20no%2C%20no%20le%20quito%20m%C3%A1s%20tiempo." target="_blank" rel="noopener">Enviar por WhatsApp</a>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/nunoa-macul/michis-cake/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, trabajo con locales de Ñuñoa y Macul.
+
+Vi *Michis Cake* y no encontré dónde ver todo con precios y pedir sin escribir mensaje por mensaje.
+
+Le armé una muestra de cómo se vería: sus productos con foto y precio, y el pedido llegando ordenado a su WhatsApp con nombre, dirección y total.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/nunoa-macul/michis-cake/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article><article class="card" data-k="pasteleria-d-gustar" data-d="{&quot;slug&quot;: &quot;pasteleria-d-gustar&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, trabajo con locales de \u00d1u\u00f1oa y Macul.\n\nVi *Pasteler\u00eda D&#x27;gustar* y no encontr\u00e9 d\u00f3nde ver todo con precios y pedir sin escribir mensaje por mensaje.\n\nLe arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: sus productos con foto y precio, y el pedido llegando ordenado a su WhatsApp con nombre, direcci\u00f3n y total.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/nunoa-macul/pasteleria-d-gustar/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Pasteler\u00eda D&#x27;gustar&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Pastelería D&#x27;gustar</div>
+      <div class="m">Pastelería artesanal · ★ 4.5</div>
+      <div class="m">Av. Macul 3226, Macul</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <a class="go" href="https://wa.me/56932737634?text=Hola%2C%20buenas%20tardes.%20Soy%20Rub%C3%A9n%2C%20trabajo%20con%20locales%20de%20%C3%91u%C3%B1oa%20y%20Macul.%0A%0AVi%20%2APasteler%C3%ADa%20D%27gustar%2A%20y%20no%20encontr%C3%A9%20d%C3%B3nde%20ver%20todo%20con%20precios%20y%20pedir%20sin%20escribir%20mensaje%20por%20mensaje.%0A%0ALe%20arm%C3%A9%20una%20muestra%20de%20c%C3%B3mo%20se%20ver%C3%ADa%3A%20sus%20productos%20con%20foto%20y%20precio%2C%20y%20el%20pedido%20llegando%20ordenado%20a%20su%20WhatsApp%20con%20nombre%2C%20direcci%C3%B3n%20y%20total.%0A%0AM%C3%ADrela%20ac%C3%A1%3A%20https%3A//rsilvaocl.github.io/resto-demos/nunoa-macul/pasteleria-d-gustar/%0A%0ASi%20le%20sirve%2C%20paso%205%20minutos%20y%20le%20explico.%20Si%20no%2C%20no%20le%20quito%20m%C3%A1s%20tiempo." target="_blank" rel="noopener">Enviar por WhatsApp</a>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/nunoa-macul/pasteleria-d-gustar/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, trabajo con locales de Ñuñoa y Macul.
+
+Vi *Pastelería D&#x27;gustar* y no encontré dónde ver todo con precios y pedir sin escribir mensaje por mensaje.
+
+Le armé una muestra de cómo se vería: sus productos con foto y precio, y el pedido llegando ordenado a su WhatsApp con nombre, dirección y total.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/nunoa-macul/pasteleria-d-gustar/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article>
+
+<h2>Sin teléfono · Instagram DM</h2>
+<article class="card" data-k="pan-amore" data-d="{&quot;slug&quot;: &quot;pan-amore&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, trabajo con locales de \u00d1u\u00f1oa y Macul.\n\nVi *Pan Amore* y no encontr\u00e9 d\u00f3nde ver todo con precios y pedir sin escribir mensaje por mensaje.\n\nLe arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: sus productos con foto y precio, y el pedido llegando ordenado a su WhatsApp con nombre, direcci\u00f3n y total.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/nunoa-macul/pan-amore/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Pan Amore&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Pan Amore</div>
+      <div class="m">Panadería artesanal · sin teléfono público</div>
+      <div class="m">Av. Irarrázaval 4955, Ñuñoa</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <button class="go ghost" onclick="copiar(this)">Copiar mensaje para Instagram</button>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/nunoa-macul/pan-amore/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, trabajo con locales de Ñuñoa y Macul.
+
+Vi *Pan Amore* y no encontré dónde ver todo con precios y pedir sin escribir mensaje por mensaje.
+
+Le armé una muestra de cómo se vería: sus productos con foto y precio, y el pedido llegando ordenado a su WhatsApp con nombre, dirección y total.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/nunoa-macul/pan-amore/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article><article class="card" data-k="cestino-panaderia-artesanal" data-d="{&quot;slug&quot;: &quot;cestino-panaderia-artesanal&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, trabajo con locales de \u00d1u\u00f1oa y Macul.\n\nVi *Cestino Panader\u00eda Artesanal* y no encontr\u00e9 d\u00f3nde ver todo con precios y pedir sin escribir mensaje por mensaje.\n\nLe arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: sus productos con foto y precio, y el pedido llegando ordenado a su WhatsApp con nombre, direcci\u00f3n y total.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/nunoa-macul/cestino-panaderia-artesanal/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Cestino Panader\u00eda Artesanal&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Cestino Panadería Artesanal</div>
+      <div class="m">Panadería de barrio · sin teléfono público</div>
+      <div class="m">Sta. Julia 201, Ñuñoa</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <button class="go ghost" onclick="copiar(this)">Copiar mensaje para Instagram</button>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/nunoa-macul/cestino-panaderia-artesanal/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, trabajo con locales de Ñuñoa y Macul.
+
+Vi *Cestino Panadería Artesanal* y no encontré dónde ver todo con precios y pedir sin escribir mensaje por mensaje.
+
+Le armé una muestra de cómo se vería: sus productos con foto y precio, y el pedido llegando ordenado a su WhatsApp con nombre, dirección y total.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/nunoa-macul/cestino-panaderia-artesanal/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article><article class="card" data-k="confiteria-constanza" data-d="{&quot;slug&quot;: &quot;confiteria-constanza&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, trabajo con locales de \u00d1u\u00f1oa y Macul.\n\nVi *Confiter\u00eda Constanza* y no encontr\u00e9 d\u00f3nde ver todo con precios y pedir sin escribir mensaje por mensaje.\n\nLe arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: sus productos con foto y precio, y el pedido llegando ordenado a su WhatsApp con nombre, direcci\u00f3n y total.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/nunoa-macul/confiteria-constanza/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Confiter\u00eda Constanza&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Confitería Constanza</div>
+      <div class="m">Confitería y pastelería · sin teléfono público</div>
+      <div class="m">Av. Macul 4067, Macul</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <button class="go ghost" onclick="copiar(this)">Copiar mensaje para Instagram</button>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/nunoa-macul/confiteria-constanza/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, trabajo con locales de Ñuñoa y Macul.
+
+Vi *Confitería Constanza* y no encontré dónde ver todo con precios y pedir sin escribir mensaje por mensaje.
+
+Le armé una muestra de cómo se vería: sus productos con foto y precio, y el pedido llegando ordenado a su WhatsApp con nombre, dirección y total.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/nunoa-macul/confiteria-constanza/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article>
+
+<h2>Fuera de juego</h2>
+<article class="card off"><div class="n">Panadería Villa La Católica</div><div class="m">El teléfono es fijo, no tiene WhatsApp. Contactar en el local o por Instagram.</div></article>
+
+<div class="note">
+  <b>Horario:</b> 10:00–12:00 o 15:00–17:00. Nunca en peak.<br>
+  <b>Un mensaje por local.</b> Si no responden, esperar 48 horas.<br>
+  <b>El link del catálogo va dentro del mensaje.</b> No hace falta enviar nada más.
+  <br><button class="reset" onclick="reiniciar()">Reiniciar contador</button>
+</div>
+
+</div>
+<script>
+const KEY="envios_nunoa_macul";
+let done=JSON.parse(localStorage.getItem(KEY)||"[]");
+function pintar(){
+  let n=0;
+  document.querySelectorAll(".card").forEach(c=>{
+    const on=done.includes(c.dataset.k);
+    c.classList.toggle("done",on);
+    if(on && c.querySelector(".go").tagName==="A") n++;
+  });
+  document.getElementById("hechos").textContent=n;
+}
+document.querySelectorAll(".card .go").forEach(b=>{
+  if(b.tagName==="A") b.addEventListener("click",()=>{
+    const k=b.closest(".card").dataset.k;
+    if(!done.includes(k)){done.push(k);localStorage.setItem(KEY,JSON.stringify(done));}
+    setTimeout(pintar,400);
+  });
+});
+function ver(btn){
+  const p=btn.closest(".card").querySelector(".preview");
+  p.classList.toggle("on");
+  btn.textContent=p.classList.contains("on")?"Ocultar":"Ver mensaje";
+}
+function copiar(btn){
+  const d=JSON.parse(btn.closest(".card").dataset.d);
+  navigator.clipboard.writeText(d.msg).then(()=>{
+    const o=btn.textContent;btn.textContent="Copiado ✓";
+    if(!done.includes(d.slug)){done.push(d.slug);localStorage.setItem(KEY,JSON.stringify(done));pintar();}
+    setTimeout(()=>btn.textContent=o,1700);
+  });
+}
+function reiniciar(){
+  done=[];localStorage.removeItem(KEY);pintar();
+}
+pintar();
+</script>
+</body></html>
