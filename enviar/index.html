@@ -1,114 +1,357 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Panel de envío</title>
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Panel de envío · Peñalolén</title>
+<meta name="theme-color" content="#08090c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-body{font-family:Inter,system-ui,sans-serif;background:#08090c;color:#eef1f5;margin:0;padding:26px 16px 60px}
-.wrap{max-width:620px;margin:0 auto}
-.k{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#5f6673;margin-bottom:10px}
-h1{font-size:26px;margin:0 0 6px;letter-spacing:-.02em}
-.s{color:#8b93a1;font-size:13px;line-height:1.6;margin-bottom:22px}
-h2{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6b7280;margin:26px 0 10px}
-.item{display:block;background:#111318;border:1px solid #1f232c;border-radius:14px;padding:15px 16px;margin-bottom:9px;text-decoration:none;color:inherit}
-.item:active{background:#161b23}
-.n{font-weight:600;font-size:15px}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:Inter,system-ui,sans-serif;background:#08090c;color:#eef1f5;margin:0;
+  padding:0 16px 70px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:640px;margin:0 auto}
+header{position:sticky;top:0;z-index:10;background:rgba(8,9,12,.93);backdrop-filter:blur(14px);
+  padding:16px 0 12px;border-bottom:1px solid #1c2028;margin-bottom:18px}
+.k{font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#5f6673;margin-bottom:7px}
+h1{font-size:23px;margin:0;letter-spacing:-.02em}
+.count{font-size:12px;color:#8b93a1;margin-top:5px}
+.count b{color:#3ddc84}
+h2{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#6b7280;margin:26px 0 10px;font-weight:600}
+.card{background:#111318;border:1px solid #1f232c;border-radius:16px;padding:16px;margin-bottom:10px;transition:.2s}
+.card.done{opacity:.45}
+.card.done .tick{opacity:1;transform:scale(1)}
+.row1{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.tick{width:22px;height:22px;border-radius:50%;background:#1d3a28;color:#3ddc84;font-size:12px;
+  display:grid;place-items:center;opacity:0;transform:scale(.6);transition:.2s;flex:none;font-weight:700}
+.n{font-weight:700;font-size:15.5px;letter-spacing:-.01em}
 .m{font-size:11.5px;color:#8b93a1;margin-top:2px}
-.go{display:inline-block;margin-top:9px;font-size:11.5px;font-weight:700;color:#7fb3ff;background:none;border:0;padding:0;cursor:pointer;font-family:inherit}
-.go2{display:inline-block;margin-top:9px;margin-left:14px;font-size:11.5px;color:#5f6673}
-.note{font-size:11px;color:#4c525d;line-height:1.8;margin-top:26px;border-top:1px solid #1f232c;padding-top:16px}
-</style></head><body><div class="wrap">
-<div class="k">Salida a terreno</div>
-<h1>Panel de envío</h1>
-<div class="s">Toque el restaurante y se abre WhatsApp con el mensaje ya escrito. Solo tiene que enviar.</div>
-<h2>Con teléfono · 6</h2>
-<a class="item" href="https://wa.me/56947147709?text=Hola%2C%20buenas%20tardes.%20Soy%20Rub%C3%A9n%2C%20vivo%20ac%C3%A1%20en%20Pe%C3%B1alol%C3%A9n.%0A%0ALe%20arm%C3%A9%20una%20carta%20digital%20de%20%2ATerraza%20Sushi%209%2A%20para%20mostrarle%20c%C3%B3mo%20se%20ver%C3%ADa%20con%20pedidos%20directos%20por%20WhatsApp%2C%20sin%20comisi%C3%B3n%20de%20las%20apps.%0A%0AM%C3%ADrela%20ac%C3%A1%20desde%20el%20tel%C3%A9fono%3A%20https%3A//rsilvaocl.github.io/resto-demos/terraza-sushi9/%0A%0ANo%20le%20vengo%20a%20vender%20nada%20por%20chat%2C%20solo%20quer%C3%ADa%20que%20la%20viera.%20Si%20le%20gusta%2C%20paso%20a%20explicarle%20en%205%20minutos." target="_blank" rel="noopener">
-          <div class="n">Terraza Sushi 9</div>
-          <div class="m">+56 947147709 · Sushi &amp; Nikkei</div>
-          <div class="go">Abrir WhatsApp →</div></a><a class="item" href="https://wa.me/56965765003?text=Hola%2C%20buenas%20tardes.%20Soy%20Rub%C3%A9n%2C%20vivo%20ac%C3%A1%20en%20Pe%C3%B1alol%C3%A9n.%0A%0ALe%20arm%C3%A9%20una%20carta%20digital%20de%20%2APochito%27s%2A%20para%20mostrarle%20c%C3%B3mo%20se%20ver%C3%ADa%20con%20pedidos%20directos%20por%20WhatsApp%2C%20sin%20comisi%C3%B3n%20de%20las%20apps.%0A%0AM%C3%ADrela%20ac%C3%A1%20desde%20el%20tel%C3%A9fono%3A%20https%3A//rsilvaocl.github.io/resto-demos/pochitos/%0A%0ANo%20le%20vengo%20a%20vender%20nada%20por%20chat%2C%20solo%20quer%C3%ADa%20que%20la%20viera.%20Si%20le%20gusta%2C%20paso%20a%20explicarle%20en%205%20minutos." target="_blank" rel="noopener">
-          <div class="n">Pochito&#x27;s</div>
-          <div class="m">+56 965765003 · Cocina chilena</div>
-          <div class="go">Abrir WhatsApp →</div></a><a class="item" href="https://wa.me/56984513174?text=Hola%2C%20buenas%20tardes.%20Soy%20Rub%C3%A9n%2C%20vivo%20ac%C3%A1%20en%20Pe%C3%B1alol%C3%A9n.%0A%0ALe%20arm%C3%A9%20una%20carta%20digital%20de%20%2ACoffee%20Station%2A%20para%20mostrarle%20c%C3%B3mo%20se%20ver%C3%ADa%20con%20pedidos%20directos%20por%20WhatsApp%2C%20sin%20comisi%C3%B3n%20de%20las%20apps.%0A%0AM%C3%ADrela%20ac%C3%A1%20desde%20el%20tel%C3%A9fono%3A%20https%3A//rsilvaocl.github.io/resto-demos/coffee-station/%0A%0ANo%20le%20vengo%20a%20vender%20nada%20por%20chat%2C%20solo%20quer%C3%ADa%20que%20la%20viera.%20Si%20le%20gusta%2C%20paso%20a%20explicarle%20en%205%20minutos." target="_blank" rel="noopener">
-          <div class="n">Coffee Station</div>
-          <div class="m">+56 984513174 · Cafetería &amp; Brunch</div>
-          <div class="go">Abrir WhatsApp →</div></a><a class="item" href="https://wa.me/56987393681?text=Hola%2C%20buenas%20tardes.%20Soy%20Rub%C3%A9n%2C%20vivo%20ac%C3%A1%20en%20Pe%C3%B1alol%C3%A9n.%0A%0ALe%20arm%C3%A9%20una%20carta%20digital%20de%20%2AWayk%27u%2A%20para%20mostrarle%20c%C3%B3mo%20se%20ver%C3%ADa%20con%20pedidos%20directos%20por%20WhatsApp%2C%20sin%20comisi%C3%B3n%20de%20las%20apps.%0A%0AM%C3%ADrela%20ac%C3%A1%20desde%20el%20tel%C3%A9fono%3A%20https%3A//rsilvaocl.github.io/resto-demos/wayku/%0A%0ANo%20le%20vengo%20a%20vender%20nada%20por%20chat%2C%20solo%20quer%C3%ADa%20que%20la%20viera.%20Si%20le%20gusta%2C%20paso%20a%20explicarle%20en%205%20minutos." target="_blank" rel="noopener">
-          <div class="n">Wayk&#x27;u</div>
-          <div class="m">+56 987393681 · Peruano &amp; Mariscos</div>
-          <div class="go">Abrir WhatsApp →</div></a><a class="item" href="https://wa.me/56985706990?text=Hola%2C%20buenas%20tardes.%20Soy%20Rub%C3%A9n%2C%20vivo%20ac%C3%A1%20en%20Pe%C3%B1alol%C3%A9n.%0A%0ALe%20arm%C3%A9%20una%20carta%20digital%20de%20%2AEntre%20Brujas%20Restobar%2A%20para%20mostrarle%20c%C3%B3mo%20se%20ver%C3%ADa%20con%20pedidos%20directos%20por%20WhatsApp%2C%20sin%20comisi%C3%B3n%20de%20las%20apps.%0A%0AM%C3%ADrela%20ac%C3%A1%20desde%20el%20tel%C3%A9fono%3A%20https%3A//rsilvaocl.github.io/resto-demos/entre-brujas/%0A%0ANo%20le%20vengo%20a%20vender%20nada%20por%20chat%2C%20solo%20quer%C3%ADa%20que%20la%20viera.%20Si%20le%20gusta%2C%20paso%20a%20explicarle%20en%205%20minutos." target="_blank" rel="noopener">
-          <div class="n">Entre Brujas Restobar</div>
-          <div class="m">+56 985706990 · Restobar</div>
-          <div class="go">Abrir WhatsApp →</div></a><a class="item" href="https://wa.me/56988314534?text=Hola%2C%20buenas%20tardes.%20Soy%20Rub%C3%A9n%2C%20vivo%20ac%C3%A1%20en%20Pe%C3%B1alol%C3%A9n.%0A%0ALe%20arm%C3%A9%20una%20carta%20digital%20de%20%2ALa%20Patrona%2A%20para%20mostrarle%20c%C3%B3mo%20se%20ver%C3%ADa%20con%20pedidos%20directos%20por%20WhatsApp%2C%20sin%20comisi%C3%B3n%20de%20las%20apps.%0A%0AM%C3%ADrela%20ac%C3%A1%20desde%20el%20tel%C3%A9fono%3A%20https%3A//rsilvaocl.github.io/resto-demos/la-patrona/%0A%0ANo%20le%20vengo%20a%20vender%20nada%20por%20chat%2C%20solo%20quer%C3%ADa%20que%20la%20viera.%20Si%20le%20gusta%2C%20paso%20a%20explicarle%20en%205%20minutos." target="_blank" rel="noopener">
-          <div class="n">La Patrona</div>
-          <div class="m">+56 988314534 · Comida casera chilena</div>
-          <div class="go">Abrir WhatsApp →</div></a>
-<h2>Sin teléfono · Instagram DM · 6</h2>
-<div class="item">
-          <div class="n">Lima 23</div>
-          <div class="m">Cocina peruana · sin teléfono público</div>
-          <button class="go" onclick="copiar(this)" data-t="Hola, buenas tardes. Soy Rubén, vivo acá en Peñalolén.
+.go{display:block;text-align:center;margin-top:13px;padding:13px;border-radius:11px;background:#25d366;
+  color:#04140c;font-size:14px;font-weight:800;text-decoration:none;border:0;width:100%;
+  font-family:inherit;cursor:pointer}
+.go:active{transform:scale(.99)}
+.go.ghost{background:#1d222c;color:#c9cfda;font-weight:600;font-size:13px}
+.sub{display:flex;gap:16px;margin-top:11px;font-size:11.5px}
+.sub a,.sub button{color:#5f6673;text-decoration:none;background:none;border:0;padding:0;
+  font-family:inherit;font-size:11.5px;cursor:pointer}
+.sub button:hover,.sub a:hover{color:#8b93a1}
+.preview{display:none;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,monospace;
+  font-size:11px;line-height:1.65;color:#8b93a1;background:#0b0d11;border:1px solid #1c2028;
+  border-radius:10px;padding:12px;margin:11px 0 0;overflow-x:auto}
+.preview.on{display:block}
+.note{font-size:11px;color:#4c525d;line-height:1.9;margin-top:28px;border-top:1px solid #1c2028;padding-top:16px}
+.note b{color:#6b7280}
+.reset{background:none;border:0;color:#4c525d;font-size:10.5px;text-decoration:underline;
+  padding:0;margin-top:14px;font-family:inherit;cursor:pointer}
+</style></head>
+<body><div class="wrap">
+
+<header>
+  <div class="k">Salida a terreno</div>
+  <h1>Panel de envío</h1>
+  <div class="count"><b id="hechos">0</b> de 6 enviados por WhatsApp</div>
+</header>
+
+<h2>Con teléfono · toque y se abre WhatsApp</h2>
+<article class="card" data-k="terraza-sushi9" data-d="{&quot;slug&quot;: &quot;terraza-sushi9&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, vivo ac\u00e1 en Pe\u00f1alol\u00e9n.\n\nLe arm\u00e9 una carta digital de *Terraza Sushi 9* para mostrarle c\u00f3mo se ver\u00eda con pedidos directos por WhatsApp, sin comisi\u00f3n de las apps.\n\nM\u00edrela ac\u00e1 desde el tel\u00e9fono: https://rsilvaocl.github.io/resto-demos/terraza-sushi9/\n\nNo le vengo a vender nada por chat, solo quer\u00eda que la viera. Si le gusta, paso a explicarle en 5 minutos.&quot;, &quot;nombre&quot;: &quot;Terraza Sushi 9&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Terraza Sushi 9</div>
+      <div class="m">Sushi &amp; Nikkei · ★ 4.9</div>
+      <div class="m">Caracas 2511, Peñalolén</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <a class="go" href="https://wa.me/56947147709?text=Hola%2C%20buenas%20tardes.%20Soy%20Rub%C3%A9n%2C%20vivo%20ac%C3%A1%20en%20Pe%C3%B1alol%C3%A9n.%0A%0ALe%20arm%C3%A9%20una%20carta%20digital%20de%20%2ATerraza%20Sushi%209%2A%20para%20mostrarle%20c%C3%B3mo%20se%20ver%C3%ADa%20con%20pedidos%20directos%20por%20WhatsApp%2C%20sin%20comisi%C3%B3n%20de%20las%20apps.%0A%0AM%C3%ADrela%20ac%C3%A1%20desde%20el%20tel%C3%A9fono%3A%20https%3A//rsilvaocl.github.io/resto-demos/terraza-sushi9/%0A%0ANo%20le%20vengo%20a%20vender%20nada%20por%20chat%2C%20solo%20quer%C3%ADa%20que%20la%20viera.%20Si%20le%20gusta%2C%20paso%20a%20explicarle%20en%205%20minutos." target="_blank" rel="noopener">Enviar por WhatsApp</a>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/terraza-sushi9/" target="_blank" rel="noopener">Ver carta</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, vivo acá en Peñalolén.
+
+Le armé una carta digital de *Terraza Sushi 9* para mostrarle cómo se vería con pedidos directos por WhatsApp, sin comisión de las apps.
+
+Mírela acá desde el teléfono: https://rsilvaocl.github.io/resto-demos/terraza-sushi9/
+
+No le vengo a vender nada por chat, solo quería que la viera. Si le gusta, paso a explicarle en 5 minutos.</pre>
+</article><article class="card" data-k="pochitos" data-d="{&quot;slug&quot;: &quot;pochitos&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, vivo ac\u00e1 en Pe\u00f1alol\u00e9n.\n\nLe arm\u00e9 una carta digital de *Pochito&#x27;s* para mostrarle c\u00f3mo se ver\u00eda con pedidos directos por WhatsApp, sin comisi\u00f3n de las apps.\n\nM\u00edrela ac\u00e1 desde el tel\u00e9fono: https://rsilvaocl.github.io/resto-demos/pochitos/\n\nNo le vengo a vender nada por chat, solo quer\u00eda que la viera. Si le gusta, paso a explicarle en 5 minutos.&quot;, &quot;nombre&quot;: &quot;Pochito&#x27;s&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Pochito&#x27;s</div>
+      <div class="m">Cocina chilena · ★ 4.4</div>
+      <div class="m">Av. Consistorial 2211, Peñalolén</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <a class="go" href="https://wa.me/56965765003?text=Hola%2C%20buenas%20tardes.%20Soy%20Rub%C3%A9n%2C%20vivo%20ac%C3%A1%20en%20Pe%C3%B1alol%C3%A9n.%0A%0ALe%20arm%C3%A9%20una%20carta%20digital%20de%20%2APochito%27s%2A%20para%20mostrarle%20c%C3%B3mo%20se%20ver%C3%ADa%20con%20pedidos%20directos%20por%20WhatsApp%2C%20sin%20comisi%C3%B3n%20de%20las%20apps.%0A%0AM%C3%ADrela%20ac%C3%A1%20desde%20el%20tel%C3%A9fono%3A%20https%3A//rsilvaocl.github.io/resto-demos/pochitos/%0A%0ANo%20le%20vengo%20a%20vender%20nada%20por%20chat%2C%20solo%20quer%C3%ADa%20que%20la%20viera.%20Si%20le%20gusta%2C%20paso%20a%20explicarle%20en%205%20minutos." target="_blank" rel="noopener">Enviar por WhatsApp</a>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/pochitos/" target="_blank" rel="noopener">Ver carta</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, vivo acá en Peñalolén.
+
+Le armé una carta digital de *Pochito&#x27;s* para mostrarle cómo se vería con pedidos directos por WhatsApp, sin comisión de las apps.
+
+Mírela acá desde el teléfono: https://rsilvaocl.github.io/resto-demos/pochitos/
+
+No le vengo a vender nada por chat, solo quería que la viera. Si le gusta, paso a explicarle en 5 minutos.</pre>
+</article><article class="card" data-k="coffee-station" data-d="{&quot;slug&quot;: &quot;coffee-station&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, vivo ac\u00e1 en Pe\u00f1alol\u00e9n.\n\nLe arm\u00e9 una carta digital de *Coffee Station* para mostrarle c\u00f3mo se ver\u00eda con pedidos directos por WhatsApp, sin comisi\u00f3n de las apps.\n\nM\u00edrela ac\u00e1 desde el tel\u00e9fono: https://rsilvaocl.github.io/resto-demos/coffee-station/\n\nNo le vengo a vender nada por chat, solo quer\u00eda que la viera. Si le gusta, paso a explicarle en 5 minutos.&quot;, &quot;nombre&quot;: &quot;Coffee Station&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Coffee Station</div>
+      <div class="m">Cafetería &amp; Brunch · ★ 4.6</div>
+      <div class="m">Av. Quebrada de Macul 8601, Loc 10</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <a class="go" href="https://wa.me/56984513174?text=Hola%2C%20buenas%20tardes.%20Soy%20Rub%C3%A9n%2C%20vivo%20ac%C3%A1%20en%20Pe%C3%B1alol%C3%A9n.%0A%0ALe%20arm%C3%A9%20una%20carta%20digital%20de%20%2ACoffee%20Station%2A%20para%20mostrarle%20c%C3%B3mo%20se%20ver%C3%ADa%20con%20pedidos%20directos%20por%20WhatsApp%2C%20sin%20comisi%C3%B3n%20de%20las%20apps.%0A%0AM%C3%ADrela%20ac%C3%A1%20desde%20el%20tel%C3%A9fono%3A%20https%3A//rsilvaocl.github.io/resto-demos/coffee-station/%0A%0ANo%20le%20vengo%20a%20vender%20nada%20por%20chat%2C%20solo%20quer%C3%ADa%20que%20la%20viera.%20Si%20le%20gusta%2C%20paso%20a%20explicarle%20en%205%20minutos." target="_blank" rel="noopener">Enviar por WhatsApp</a>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/coffee-station/" target="_blank" rel="noopener">Ver carta</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, vivo acá en Peñalolén.
+
+Le armé una carta digital de *Coffee Station* para mostrarle cómo se vería con pedidos directos por WhatsApp, sin comisión de las apps.
+
+Mírela acá desde el teléfono: https://rsilvaocl.github.io/resto-demos/coffee-station/
+
+No le vengo a vender nada por chat, solo quería que la viera. Si le gusta, paso a explicarle en 5 minutos.</pre>
+</article><article class="card" data-k="wayku" data-d="{&quot;slug&quot;: &quot;wayku&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, vivo ac\u00e1 en Pe\u00f1alol\u00e9n.\n\nLe arm\u00e9 una carta digital de *Wayk&#x27;u* para mostrarle c\u00f3mo se ver\u00eda con pedidos directos por WhatsApp, sin comisi\u00f3n de las apps.\n\nM\u00edrela ac\u00e1 desde el tel\u00e9fono: https://rsilvaocl.github.io/resto-demos/wayku/\n\nNo le vengo a vender nada por chat, solo quer\u00eda que la viera. Si le gusta, paso a explicarle en 5 minutos.&quot;, &quot;nombre&quot;: &quot;Wayk&#x27;u&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Wayk&#x27;u</div>
+      <div class="m">Peruano &amp; Mariscos · ★ 4.5</div>
+      <div class="m">Av. Las Perdices 2990, Loc 16</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <a class="go" href="https://wa.me/56987393681?text=Hola%2C%20buenas%20tardes.%20Soy%20Rub%C3%A9n%2C%20vivo%20ac%C3%A1%20en%20Pe%C3%B1alol%C3%A9n.%0A%0ALe%20arm%C3%A9%20una%20carta%20digital%20de%20%2AWayk%27u%2A%20para%20mostrarle%20c%C3%B3mo%20se%20ver%C3%ADa%20con%20pedidos%20directos%20por%20WhatsApp%2C%20sin%20comisi%C3%B3n%20de%20las%20apps.%0A%0AM%C3%ADrela%20ac%C3%A1%20desde%20el%20tel%C3%A9fono%3A%20https%3A//rsilvaocl.github.io/resto-demos/wayku/%0A%0ANo%20le%20vengo%20a%20vender%20nada%20por%20chat%2C%20solo%20quer%C3%ADa%20que%20la%20viera.%20Si%20le%20gusta%2C%20paso%20a%20explicarle%20en%205%20minutos." target="_blank" rel="noopener">Enviar por WhatsApp</a>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/wayku/" target="_blank" rel="noopener">Ver carta</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, vivo acá en Peñalolén.
+
+Le armé una carta digital de *Wayk&#x27;u* para mostrarle cómo se vería con pedidos directos por WhatsApp, sin comisión de las apps.
+
+Mírela acá desde el teléfono: https://rsilvaocl.github.io/resto-demos/wayku/
+
+No le vengo a vender nada por chat, solo quería que la viera. Si le gusta, paso a explicarle en 5 minutos.</pre>
+</article><article class="card" data-k="entre-brujas" data-d="{&quot;slug&quot;: &quot;entre-brujas&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, vivo ac\u00e1 en Pe\u00f1alol\u00e9n.\n\nLe arm\u00e9 una carta digital de *Entre Brujas Restobar* para mostrarle c\u00f3mo se ver\u00eda con pedidos directos por WhatsApp, sin comisi\u00f3n de las apps.\n\nM\u00edrela ac\u00e1 desde el tel\u00e9fono: https://rsilvaocl.github.io/resto-demos/entre-brujas/\n\nNo le vengo a vender nada por chat, solo quer\u00eda que la viera. Si le gusta, paso a explicarle en 5 minutos.&quot;, &quot;nombre&quot;: &quot;Entre Brujas Restobar&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Entre Brujas Restobar</div>
+      <div class="m">Restobar · ★ 4.9</div>
+      <div class="m">Av. Los Presidentes 7696, Peñalolén</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <a class="go" href="https://wa.me/56985706990?text=Hola%2C%20buenas%20tardes.%20Soy%20Rub%C3%A9n%2C%20vivo%20ac%C3%A1%20en%20Pe%C3%B1alol%C3%A9n.%0A%0ALe%20arm%C3%A9%20una%20carta%20digital%20de%20%2AEntre%20Brujas%20Restobar%2A%20para%20mostrarle%20c%C3%B3mo%20se%20ver%C3%ADa%20con%20pedidos%20directos%20por%20WhatsApp%2C%20sin%20comisi%C3%B3n%20de%20las%20apps.%0A%0AM%C3%ADrela%20ac%C3%A1%20desde%20el%20tel%C3%A9fono%3A%20https%3A//rsilvaocl.github.io/resto-demos/entre-brujas/%0A%0ANo%20le%20vengo%20a%20vender%20nada%20por%20chat%2C%20solo%20quer%C3%ADa%20que%20la%20viera.%20Si%20le%20gusta%2C%20paso%20a%20explicarle%20en%205%20minutos." target="_blank" rel="noopener">Enviar por WhatsApp</a>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/entre-brujas/" target="_blank" rel="noopener">Ver carta</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, vivo acá en Peñalolén.
+
+Le armé una carta digital de *Entre Brujas Restobar* para mostrarle cómo se vería con pedidos directos por WhatsApp, sin comisión de las apps.
+
+Mírela acá desde el teléfono: https://rsilvaocl.github.io/resto-demos/entre-brujas/
+
+No le vengo a vender nada por chat, solo quería que la viera. Si le gusta, paso a explicarle en 5 minutos.</pre>
+</article><article class="card" data-k="la-patrona" data-d="{&quot;slug&quot;: &quot;la-patrona&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, vivo ac\u00e1 en Pe\u00f1alol\u00e9n.\n\nLe arm\u00e9 una carta digital de *La Patrona* para mostrarle c\u00f3mo se ver\u00eda con pedidos directos por WhatsApp, sin comisi\u00f3n de las apps.\n\nM\u00edrela ac\u00e1 desde el tel\u00e9fono: https://rsilvaocl.github.io/resto-demos/la-patrona/\n\nNo le vengo a vender nada por chat, solo quer\u00eda que la viera. Si le gusta, paso a explicarle en 5 minutos.&quot;, &quot;nombre&quot;: &quot;La Patrona&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">La Patrona</div>
+      <div class="m">Comida casera chilena · ★ 4.4</div>
+      <div class="m">Pedro Rico 6196, Peñalolén</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <a class="go" href="https://wa.me/56988314534?text=Hola%2C%20buenas%20tardes.%20Soy%20Rub%C3%A9n%2C%20vivo%20ac%C3%A1%20en%20Pe%C3%B1alol%C3%A9n.%0A%0ALe%20arm%C3%A9%20una%20carta%20digital%20de%20%2ALa%20Patrona%2A%20para%20mostrarle%20c%C3%B3mo%20se%20ver%C3%ADa%20con%20pedidos%20directos%20por%20WhatsApp%2C%20sin%20comisi%C3%B3n%20de%20las%20apps.%0A%0AM%C3%ADrela%20ac%C3%A1%20desde%20el%20tel%C3%A9fono%3A%20https%3A//rsilvaocl.github.io/resto-demos/la-patrona/%0A%0ANo%20le%20vengo%20a%20vender%20nada%20por%20chat%2C%20solo%20quer%C3%ADa%20que%20la%20viera.%20Si%20le%20gusta%2C%20paso%20a%20explicarle%20en%205%20minutos." target="_blank" rel="noopener">Enviar por WhatsApp</a>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/la-patrona/" target="_blank" rel="noopener">Ver carta</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, vivo acá en Peñalolén.
+
+Le armé una carta digital de *La Patrona* para mostrarle cómo se vería con pedidos directos por WhatsApp, sin comisión de las apps.
+
+Mírela acá desde el teléfono: https://rsilvaocl.github.io/resto-demos/la-patrona/
+
+No le vengo a vender nada por chat, solo quería que la viera. Si le gusta, paso a explicarle en 5 minutos.</pre>
+</article>
+
+<h2>Sin teléfono · Instagram DM</h2>
+<article class="card" data-k="lima23" data-d="{&quot;slug&quot;: &quot;lima23&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, vivo ac\u00e1 en Pe\u00f1alol\u00e9n.\n\nLe arm\u00e9 una carta digital de *Lima 23* para mostrarle c\u00f3mo se ver\u00eda con pedidos directos por WhatsApp, sin comisi\u00f3n de las apps.\n\nM\u00edrela ac\u00e1 desde el tel\u00e9fono: https://rsilvaocl.github.io/resto-demos/lima23/\n\nNo le vengo a vender nada por chat, solo quer\u00eda que la viera. Si le gusta, paso a explicarle en 5 minutos.&quot;, &quot;nombre&quot;: &quot;Lima 23&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Lima 23</div>
+      <div class="m">Cocina peruana · sin teléfono público</div>
+      <div class="m">Av. Sánchez Fontecilla 12038, Peñalolén</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <button class="go ghost" onclick="copiar(this)">Copiar mensaje para Instagram</button>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/lima23/" target="_blank" rel="noopener">Ver carta</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, vivo acá en Peñalolén.
 
 Le armé una carta digital de *Lima 23* para mostrarle cómo se vería con pedidos directos por WhatsApp, sin comisión de las apps.
 
 Mírela acá desde el teléfono: https://rsilvaocl.github.io/resto-demos/lima23/
 
-No le vengo a vender nada por chat, solo quería que la viera. Si le gusta, paso a explicarle en 5 minutos.">Copiar mensaje →</button>
-          <a class="go2" href="https://rsilvaocl.github.io/resto-demos/lima23/" target="_blank" rel="noopener">Ver carta</a></div><div class="item">
-          <div class="n">Restobar Donde La Yole</div>
-          <div class="m">Venezolano · sin teléfono público</div>
-          <button class="go" onclick="copiar(this)" data-t="Hola, buenas tardes. Soy Rubén, vivo acá en Peñalolén.
+No le vengo a vender nada por chat, solo quería que la viera. Si le gusta, paso a explicarle en 5 minutos.</pre>
+</article><article class="card" data-k="donde-la-yole" data-d="{&quot;slug&quot;: &quot;donde-la-yole&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, vivo ac\u00e1 en Pe\u00f1alol\u00e9n.\n\nLe arm\u00e9 una carta digital de *Restobar Donde La Yole* para mostrarle c\u00f3mo se ver\u00eda con pedidos directos por WhatsApp, sin comisi\u00f3n de las apps.\n\nM\u00edrela ac\u00e1 desde el tel\u00e9fono: https://rsilvaocl.github.io/resto-demos/donde-la-yole/\n\nNo le vengo a vender nada por chat, solo quer\u00eda que la viera. Si le gusta, paso a explicarle en 5 minutos.&quot;, &quot;nombre&quot;: &quot;Restobar Donde La Yole&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Restobar Donde La Yole</div>
+      <div class="m">Venezolano · sin teléfono público</div>
+      <div class="m">Av. Grecia 6481, Peñalolén</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <button class="go ghost" onclick="copiar(this)">Copiar mensaje para Instagram</button>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/donde-la-yole/" target="_blank" rel="noopener">Ver carta</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, vivo acá en Peñalolén.
 
 Le armé una carta digital de *Restobar Donde La Yole* para mostrarle cómo se vería con pedidos directos por WhatsApp, sin comisión de las apps.
 
 Mírela acá desde el teléfono: https://rsilvaocl.github.io/resto-demos/donde-la-yole/
 
-No le vengo a vender nada por chat, solo quería que la viera. Si le gusta, paso a explicarle en 5 minutos.">Copiar mensaje →</button>
-          <a class="go2" href="https://rsilvaocl.github.io/resto-demos/donde-la-yole/" target="_blank" rel="noopener">Ver carta</a></div><div class="item">
-          <div class="n">Valicha Beach Bar</div>
-          <div class="m">Bar &amp; Piqueos · sin teléfono público</div>
-          <button class="go" onclick="copiar(this)" data-t="Hola, buenas tardes. Soy Rubén, vivo acá en Peñalolén.
+No le vengo a vender nada por chat, solo quería que la viera. Si le gusta, paso a explicarle en 5 minutos.</pre>
+</article><article class="card" data-k="valicha" data-d="{&quot;slug&quot;: &quot;valicha&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, vivo ac\u00e1 en Pe\u00f1alol\u00e9n.\n\nLe arm\u00e9 una carta digital de *Valicha Beach Bar* para mostrarle c\u00f3mo se ver\u00eda con pedidos directos por WhatsApp, sin comisi\u00f3n de las apps.\n\nM\u00edrela ac\u00e1 desde el tel\u00e9fono: https://rsilvaocl.github.io/resto-demos/valicha/\n\nNo le vengo a vender nada por chat, solo quer\u00eda que la viera. Si le gusta, paso a explicarle en 5 minutos.&quot;, &quot;nombre&quot;: &quot;Valicha Beach Bar&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Valicha Beach Bar</div>
+      <div class="m">Bar &amp; Piqueos · sin teléfono público</div>
+      <div class="m">Av. Sánchez Fontecilla 12030, Peñalolén</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <button class="go ghost" onclick="copiar(this)">Copiar mensaje para Instagram</button>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/valicha/" target="_blank" rel="noopener">Ver carta</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, vivo acá en Peñalolén.
 
 Le armé una carta digital de *Valicha Beach Bar* para mostrarle cómo se vería con pedidos directos por WhatsApp, sin comisión de las apps.
 
 Mírela acá desde el teléfono: https://rsilvaocl.github.io/resto-demos/valicha/
 
-No le vengo a vender nada por chat, solo quería que la viera. Si le gusta, paso a explicarle en 5 minutos.">Copiar mensaje →</button>
-          <a class="go2" href="https://rsilvaocl.github.io/resto-demos/valicha/" target="_blank" rel="noopener">Ver carta</a></div><div class="item">
-          <div class="n">Alejo Cevichería 5050</div>
-          <div class="m">Marisquería · sin teléfono público</div>
-          <button class="go" onclick="copiar(this)" data-t="Hola, buenas tardes. Soy Rubén, vivo acá en Peñalolén.
+No le vengo a vender nada por chat, solo quería que la viera. Si le gusta, paso a explicarle en 5 minutos.</pre>
+</article><article class="card" data-k="alejocevicheria" data-d="{&quot;slug&quot;: &quot;alejocevicheria&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, vivo ac\u00e1 en Pe\u00f1alol\u00e9n.\n\nLe arm\u00e9 una carta digital de *Alejo Cevicher\u00eda 5050* para mostrarle c\u00f3mo se ver\u00eda con pedidos directos por WhatsApp, sin comisi\u00f3n de las apps.\n\nM\u00edrela ac\u00e1 desde el tel\u00e9fono: https://rsilvaocl.github.io/resto-demos/alejocevicheria/\n\nNo le vengo a vender nada por chat, solo quer\u00eda que la viera. Si le gusta, paso a explicarle en 5 minutos.&quot;, &quot;nombre&quot;: &quot;Alejo Cevicher\u00eda 5050&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Alejo Cevichería 5050</div>
+      <div class="m">Marisquería · sin teléfono público</div>
+      <div class="m">Av. Grecia 8330, Peñalolén</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <button class="go ghost" onclick="copiar(this)">Copiar mensaje para Instagram</button>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/alejocevicheria/" target="_blank" rel="noopener">Ver carta</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, vivo acá en Peñalolén.
 
 Le armé una carta digital de *Alejo Cevichería 5050* para mostrarle cómo se vería con pedidos directos por WhatsApp, sin comisión de las apps.
 
 Mírela acá desde el teléfono: https://rsilvaocl.github.io/resto-demos/alejocevicheria/
 
-No le vengo a vender nada por chat, solo quería que la viera. Si le gusta, paso a explicarle en 5 minutos.">Copiar mensaje →</button>
-          <a class="go2" href="https://rsilvaocl.github.io/resto-demos/alejocevicheria/" target="_blank" rel="noopener">Ver carta</a></div><div class="item">
-          <div class="n">Completería Don Julio</div>
-          <div class="m">Completos &amp; Sándwiches · sin teléfono público</div>
-          <button class="go" onclick="copiar(this)" data-t="Hola, buenas tardes. Soy Rubén, vivo acá en Peñalolén.
+No le vengo a vender nada por chat, solo quería que la viera. Si le gusta, paso a explicarle en 5 minutos.</pre>
+</article><article class="card" data-k="don-julio" data-d="{&quot;slug&quot;: &quot;don-julio&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, vivo ac\u00e1 en Pe\u00f1alol\u00e9n.\n\nLe arm\u00e9 una carta digital de *Completer\u00eda Don Julio* para mostrarle c\u00f3mo se ver\u00eda con pedidos directos por WhatsApp, sin comisi\u00f3n de las apps.\n\nM\u00edrela ac\u00e1 desde el tel\u00e9fono: https://rsilvaocl.github.io/resto-demos/don-julio/\n\nNo le vengo a vender nada por chat, solo quer\u00eda que la viera. Si le gusta, paso a explicarle en 5 minutos.&quot;, &quot;nombre&quot;: &quot;Completer\u00eda Don Julio&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Completería Don Julio</div>
+      <div class="m">Completos &amp; Sándwiches · sin teléfono público</div>
+      <div class="m">Av. Grecia 5893, Peñalolén</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <button class="go ghost" onclick="copiar(this)">Copiar mensaje para Instagram</button>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/don-julio/" target="_blank" rel="noopener">Ver carta</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, vivo acá en Peñalolén.
 
 Le armé una carta digital de *Completería Don Julio* para mostrarle cómo se vería con pedidos directos por WhatsApp, sin comisión de las apps.
 
 Mírela acá desde el teléfono: https://rsilvaocl.github.io/resto-demos/don-julio/
 
-No le vengo a vender nada por chat, solo quería que la viera. Si le gusta, paso a explicarle en 5 minutos.">Copiar mensaje →</button>
-          <a class="go2" href="https://rsilvaocl.github.io/resto-demos/don-julio/" target="_blank" rel="noopener">Ver carta</a></div><div class="item">
-          <div class="n">Vamos Donde Carlito</div>
-          <div class="m">Parrilla &amp; Carnes · sin teléfono público</div>
-          <button class="go" onclick="copiar(this)" data-t="Hola, buenas tardes. Soy Rubén, vivo acá en Peñalolén.
+No le vengo a vender nada por chat, solo quería que la viera. Si le gusta, paso a explicarle en 5 minutos.</pre>
+</article><article class="card" data-k="donde-carlito" data-d="{&quot;slug&quot;: &quot;donde-carlito&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, vivo ac\u00e1 en Pe\u00f1alol\u00e9n.\n\nLe arm\u00e9 una carta digital de *Vamos Donde Carlito* para mostrarle c\u00f3mo se ver\u00eda con pedidos directos por WhatsApp, sin comisi\u00f3n de las apps.\n\nM\u00edrela ac\u00e1 desde el tel\u00e9fono: https://rsilvaocl.github.io/resto-demos/donde-carlito/\n\nNo le vengo a vender nada por chat, solo quer\u00eda que la viera. Si le gusta, paso a explicarle en 5 minutos.&quot;, &quot;nombre&quot;: &quot;Vamos Donde Carlito&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Vamos Donde Carlito</div>
+      <div class="m">Parrilla &amp; Carnes · sin teléfono público</div>
+      <div class="m">Av. Tobalaba 15239, Peñalolén</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <button class="go ghost" onclick="copiar(this)">Copiar mensaje para Instagram</button>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/donde-carlito/" target="_blank" rel="noopener">Ver carta</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, vivo acá en Peñalolén.
 
 Le armé una carta digital de *Vamos Donde Carlito* para mostrarle cómo se vería con pedidos directos por WhatsApp, sin comisión de las apps.
 
 Mírela acá desde el teléfono: https://rsilvaocl.github.io/resto-demos/donde-carlito/
 
-No le vengo a vender nada por chat, solo quería que la viera. Si le gusta, paso a explicarle en 5 minutos.">Copiar mensaje →</button>
-          <a class="go2" href="https://rsilvaocl.github.io/resto-demos/donde-carlito/" target="_blank" rel="noopener">Ver carta</a></div>
-<div class="note">Enviar entre 10:00–12:00 o 15:00–17:00. Nunca en peak.<br>
-Un mensaje por local. No repetir si no responden hasta 48 horas después.</div>
+No le vengo a vender nada por chat, solo quería que la viera. Si le gusta, paso a explicarle en 5 minutos.</pre>
+</article>
+
+<div class="note">
+  <b>Horario:</b> 10:00–12:00 o 15:00–17:00. Nunca en peak.<br>
+  <b>Un mensaje por local.</b> Si no responden, esperar 48 horas.<br>
+  <b>El link de la carta va dentro del mensaje.</b> No hace falta enviar nada más.
+  <br><button class="reset" onclick="reiniciar()">Reiniciar contador</button>
+</div>
+
 </div>
 <script>
+const KEY="envios_penalolen";
+let done=JSON.parse(localStorage.getItem(KEY)||"[]");
+function pintar(){
+  let n=0;
+  document.querySelectorAll(".card").forEach(c=>{
+    const on=done.includes(c.dataset.k);
+    c.classList.toggle("done",on);
+    if(on && c.querySelector(".go").tagName==="A") n++;
+  });
+  document.getElementById("hechos").textContent=n;
+}
+document.querySelectorAll(".card .go").forEach(b=>{
+  if(b.tagName==="A") b.addEventListener("click",()=>{
+    const k=b.closest(".card").dataset.k;
+    if(!done.includes(k)){done.push(k);localStorage.setItem(KEY,JSON.stringify(done));}
+    setTimeout(pintar,400);
+  });
+});
+function ver(btn){
+  const p=btn.closest(".card").querySelector(".preview");
+  p.classList.toggle("on");
+  btn.textContent=p.classList.contains("on")?"Ocultar":"Ver mensaje";
+}
 function copiar(btn){
-  navigator.clipboard.writeText(btn.dataset.t).then(()=>{
-    const o=btn.textContent; btn.textContent='Copiado ✓';
-    setTimeout(()=>btn.textContent=o,1600);
+  const d=JSON.parse(btn.closest(".card").dataset.d);
+  navigator.clipboard.writeText(d.msg).then(()=>{
+    const o=btn.textContent;btn.textContent="Copiado ✓";
+    if(!done.includes(d.slug)){done.push(d.slug);localStorage.setItem(KEY,JSON.stringify(done));pintar();}
+    setTimeout(()=>btn.textContent=o,1700);
   });
 }
-</script></body></html>
+function reiniciar(){
+  done=[];localStorage.removeItem(KEY);pintar();
+}
+pintar();
+</script>
+</body></html>
