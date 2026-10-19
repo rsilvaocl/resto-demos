@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Panel · Vamos Donde Carlito</title>
+<style>
+body{font-family:Inter,system-ui,sans-serif;background:#0c0e12;color:#e9ecf1;margin:0;padding:22px;line-height:1.5}
+.wrap{max-width:720px;margin:0 auto}
+.kick{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#6b7280;margin-bottom:8px}
+h1{font-size:25px;margin:0 0 6px;font-weight:700;letter-spacing:-.02em}
+.sub{color:#8b93a1;font-size:13px;margin-bottom:26px}
+.box{background:#14171d;border:1px solid #232833;border-radius:16px;padding:16px;margin-bottom:14px}
+h2{font-size:10.5px;text-transform:uppercase;letter-spacing:.14em;color:#7c8494;margin:0 0 10px;font-weight:600}
+.row{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid #1e222b}
+.row:last-child{border:0}
+.row .n{flex:1;font-size:14px}
+input[type=number]{width:112px;background:#0c0e12;color:#e9ecf1;border:1px solid #2a303c;border-radius:9px;
+  padding:8px 10px;font-size:14px;text-align:right;font-family:inherit}
+button{background:#3b82f6;color:#fff;border:0;padding:12px 18px;border-radius:11px;font-weight:600;
+  font-size:14px;cursor:pointer;font-family:inherit}
+button.sec{background:#1d222c;color:#c9cfda}
+button:active{transform:scale(.98)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.ok{color:#34d399;font-size:13px;margin-top:12px;min-height:18px}
+</style></head><body><div class="wrap">
+<div class="kick">Panel del local</div>
+<h1>Vamos Donde Carlito</h1>
+<div class="sub">Cambie precios y disponibilidad sin depender de nadie.</div>
+<div id="app"></div>
+<div class="actions">
+  <button onclick="guardar()">Guardar cambios</button>
+  <button class="sec" onclick="exportar()">Descargar carta</button>
+  <button class="sec" onclick="location.href='index.html'">Ver carta</button>
+</div>
+<div class="ok" id="ok"></div>
+<script>
+const DATA = {"slug": "donde-carlito", "nombre": "Vamos Donde Carlito", "tipo": "Parrilla & Carnes", "rating": "4.4", "direccion": "Av. Tobalaba 15239, Peñalolén", "telefono": "", "wa_display": "", "horarios": {"lun": [12, 23], "mar": [12, 23], "mie": [12, 23], "jue": [12, 23], "vie": [12, 24], "sab": [12, 24], "dom": [12, 22]}, "tema": {"bg": "#0f0c08", "card": "#1f1810", "acento": "#c1121f", "acento2": "#e9a23b", "texto": "#faf3e8", "fuente": "Playfair Display", "hero": "https://images.unsplash.com/photo-1544025162-d76694265947?w=1400&q=70"}, "lema": "Parrilla a la vista, cortes de verdad", "categorias": [{"n": "Parrilla", "items": [{"n": "Parrillada para 2", "d": "Lomo, pollo, chorizo, papas", "p": 24900, "tag": "Top"}, {"n": "Bife de chorizo 400g", "d": "Con guarnición", "p": 16900, "tag": "Top"}, {"n": "Costillas BBQ", "d": "Media rack", "p": 14900}, {"n": "Pollo a las brasas", "d": "Medio pollo", "p": 10900}]}, {"n": "Entradas", "items": [{"n": "Chorizo artesanal", "d": "Con pan amasado", "p": 6900}, {"n": "Provoleta", "d": "Con orégano", "p": 6500}]}, {"n": "Acompañamientos", "items": [{"n": "Papas rústicas", "d": "", "p": 4500}, {"n": "Ensalada chilena", "d": "", "p": 3900}]}, {"n": "Bebidas", "items": [{"n": "Vino tinto copa", "d": "Cabernet Sauvignon", "p": 4900}, {"n": "Cerveza 500ml", "d": "", "p": 4200}]}]};
+const KEY = "admin_"+DATA.slug;
+const saved = JSON.parse(localStorage.getItem(KEY)||"null");
+if(saved){ DATA.categorias = saved; }
+document.getElementById("app").innerHTML = DATA.categorias.map((c,ci)=>`
+  <div class="box"><h2>${c.n}</h2>
+  ${c.items.map((it,ii)=>`<div class="row">
+      <span class="n">${it.n}</span>
+      <input type="number" value="${it.p}" step="100" onchange="setP(${ci},${ii},this.value)">
+    </div>`).join("")}</div>`).join("");
+function setP(ci,ii,v){ DATA.categorias[ci].items[ii].p = Number(v)||0; }
+function guardar(){
+  localStorage.setItem(KEY, JSON.stringify(DATA.categorias));
+  document.getElementById("ok").textContent = "Cambios guardados en este dispositivo ✓";
+}
+function exportar(){
+  const blob = new Blob([JSON.stringify(DATA,null,2)],{type:"application/json"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = DATA.slug + ".json"; a.click();
+}
+</script></div></body></html>

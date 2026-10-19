@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Panel · La Patrona</title>
+<style>
+body{font-family:Inter,system-ui,sans-serif;background:#0c0e12;color:#e9ecf1;margin:0;padding:22px;line-height:1.5}
+.wrap{max-width:720px;margin:0 auto}
+.kick{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#6b7280;margin-bottom:8px}
+h1{font-size:25px;margin:0 0 6px;font-weight:700;letter-spacing:-.02em}
+.sub{color:#8b93a1;font-size:13px;margin-bottom:26px}
+.box{background:#14171d;border:1px solid #232833;border-radius:16px;padding:16px;margin-bottom:14px}
+h2{font-size:10.5px;text-transform:uppercase;letter-spacing:.14em;color:#7c8494;margin:0 0 10px;font-weight:600}
+.row{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid #1e222b}
+.row:last-child{border:0}
+.row .n{flex:1;font-size:14px}
+input[type=number]{width:112px;background:#0c0e12;color:#e9ecf1;border:1px solid #2a303c;border-radius:9px;
+  padding:8px 10px;font-size:14px;text-align:right;font-family:inherit}
+button{background:#3b82f6;color:#fff;border:0;padding:12px 18px;border-radius:11px;font-weight:600;
+  font-size:14px;cursor:pointer;font-family:inherit}
+button.sec{background:#1d222c;color:#c9cfda}
+button:active{transform:scale(.98)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.ok{color:#34d399;font-size:13px;margin-top:12px;min-height:18px}
+</style></head><body><div class="wrap">
+<div class="kick">Panel del local</div>
+<h1>La Patrona</h1>
+<div class="sub">Cambie precios y disponibilidad sin depender de nadie.</div>
+<div id="app"></div>
+<div class="actions">
+  <button onclick="guardar()">Guardar cambios</button>
+  <button class="sec" onclick="exportar()">Descargar carta</button>
+  <button class="sec" onclick="location.href='index.html'">Ver carta</button>
+</div>
+<div class="ok" id="ok"></div>
+<script>
+const DATA = {"slug": "la-patrona", "nombre": "La Patrona", "tipo": "Comida casera chilena", "rating": "4.4", "direccion": "Pedro Rico 6196, Peñalolén", "telefono": "56988314534", "wa_display": "+56 9 8831 4534", "horarios": {"lun": [11.5, 17.5], "mar": [11.5, 17.5], "mie": [11.5, 17.5], "jue": [11.5, 17.5], "vie": [11.5, 18], "sab": [12, 17], "dom": [12, 16]}, "tema": {"bg": "#f8f4ec", "card": "#ffffff", "acento": "#b23a2e", "acento2": "#e8b04b", "texto": "#2f2620", "fuente": "Lora", "hero": "https://images.unsplash.com/photo-1547592180-85f173990554?w=1400&q=70", "claro": true}, "lema": "Almuerzos caseros, hechos el mismo día", "categorias": [{"n": "Almuerzos del día", "items": [{"n": "Menú del día", "d": "Entrada + fondo + bebida", "p": 6500, "tag": "Top"}, {"n": "Cazuela de vacuno", "d": "", "p": 7900}, {"n": "Pastel de choclo", "d": "", "p": 8500, "tag": "Top"}, {"n": "Pollo arvejado", "d": "", "p": 7500}]}, {"n": "A la carta", "items": [{"n": "Bistec a lo pobre", "d": "", "p": 9900}, {"n": "Milanesa con puré", "d": "", "p": 8500}]}, {"n": "Postres", "items": [{"n": "Leche asada", "d": "", "p": 2800}, {"n": "Arroz con leche", "d": "", "p": 2500}]}, {"n": "Bebidas", "items": [{"n": "Jugo natural", "d": "Del día", "p": 2500}, {"n": "Té o café", "d": "", "p": 1500}]}]};
+const KEY = "admin_"+DATA.slug;
+const saved = JSON.parse(localStorage.getItem(KEY)||"null");
+if(saved){ DATA.categorias = saved; }
+document.getElementById("app").innerHTML = DATA.categorias.map((c,ci)=>`
+  <div class="box"><h2>${c.n}</h2>
+  ${c.items.map((it,ii)=>`<div class="row">
+      <span class="n">${it.n}</span>
+      <input type="number" value="${it.p}" step="100" onchange="setP(${ci},${ii},this.value)">
+    </div>`).join("")}</div>`).join("");
+function setP(ci,ii,v){ DATA.categorias[ci].items[ii].p = Number(v)||0; }
+function guardar(){
+  localStorage.setItem(KEY, JSON.stringify(DATA.categorias));
+  document.getElementById("ok").textContent = "Cambios guardados en este dispositivo ✓";
+}
+function exportar(){
+  const blob = new Blob([JSON.stringify(DATA,null,2)],{type:"application/json"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = DATA.slug + ".json"; a.click();
+}
+</script></div></body></html>

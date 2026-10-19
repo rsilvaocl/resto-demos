@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Panel · Alejo Cevichería 5050</title>
+<style>
+body{font-family:Inter,system-ui,sans-serif;background:#0c0e12;color:#e9ecf1;margin:0;padding:22px;line-height:1.5}
+.wrap{max-width:720px;margin:0 auto}
+.kick{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#6b7280;margin-bottom:8px}
+h1{font-size:25px;margin:0 0 6px;font-weight:700;letter-spacing:-.02em}
+.sub{color:#8b93a1;font-size:13px;margin-bottom:26px}
+.box{background:#14171d;border:1px solid #232833;border-radius:16px;padding:16px;margin-bottom:14px}
+h2{font-size:10.5px;text-transform:uppercase;letter-spacing:.14em;color:#7c8494;margin:0 0 10px;font-weight:600}
+.row{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid #1e222b}
+.row:last-child{border:0}
+.row .n{flex:1;font-size:14px}
+input[type=number]{width:112px;background:#0c0e12;color:#e9ecf1;border:1px solid #2a303c;border-radius:9px;
+  padding:8px 10px;font-size:14px;text-align:right;font-family:inherit}
+button{background:#3b82f6;color:#fff;border:0;padding:12px 18px;border-radius:11px;font-weight:600;
+  font-size:14px;cursor:pointer;font-family:inherit}
+button.sec{background:#1d222c;color:#c9cfda}
+button:active{transform:scale(.98)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.ok{color:#34d399;font-size:13px;margin-top:12px;min-height:18px}
+</style></head><body><div class="wrap">
+<div class="kick">Panel del local</div>
+<h1>Alejo Cevichería 5050</h1>
+<div class="sub">Cambie precios y disponibilidad sin depender de nadie.</div>
+<div id="app"></div>
+<div class="actions">
+  <button onclick="guardar()">Guardar cambios</button>
+  <button class="sec" onclick="exportar()">Descargar carta</button>
+  <button class="sec" onclick="location.href='index.html'">Ver carta</button>
+</div>
+<div class="ok" id="ok"></div>
+<script>
+const DATA = {"slug": "alejocevicheria", "nombre": "Alejo Cevichería 5050", "tipo": "Marisquería", "rating": "4.1", "direccion": "Av. Grecia 8330, Peñalolén", "telefono": "", "wa_display": "", "horarios": {"lun": [12, 17], "mar": [12, 17], "mie": [12, 17], "jue": [12, 17], "vie": [12, 18], "sab": [12, 18], "dom": [12, 17]}, "tema": {"bg": "#071a1f", "card": "#0e2a33", "acento": "#06d6a0", "acento2": "#ffd166", "texto": "#e8fbf6", "fuente": "Montserrat", "hero": "https://images.unsplash.com/photo-1512838243191-e81e8f66f1fd?w=1400&q=70"}, "lema": "Mariscos frescos, preparados al momento", "categorias": [{"n": "Ceviches", "items": [{"n": "Ceviche de reineta", "d": "Leche de tigre clásica", "p": 9900, "tag": "Top"}, {"n": "Ceviche mixto", "d": "Reineta, camarón, machas", "p": 12500}, {"n": "Ceviche de camarón", "d": "", "p": 11900}]}, {"n": "Calientes", "items": [{"n": "Empanada de mariscos", "d": "Frita, masa casera", "p": 3900}, {"n": "Chupe de mariscos", "d": "Gratinado", "p": 11900, "tag": "Top"}, {"n": "Arroz con mariscos", "d": "", "p": 12900}]}, {"n": "Bebidas", "items": [{"n": "Vino blanco copa", "d": "Sauvignon Blanc", "p": 4500}, {"n": "Bebida 500ml", "d": "", "p": 2200}]}]};
+const KEY = "admin_"+DATA.slug;
+const saved = JSON.parse(localStorage.getItem(KEY)||"null");
+if(saved){ DATA.categorias = saved; }
+document.getElementById("app").innerHTML = DATA.categorias.map((c,ci)=>`
+  <div class="box"><h2>${c.n}</h2>
+  ${c.items.map((it,ii)=>`<div class="row">
+      <span class="n">${it.n}</span>
+      <input type="number" value="${it.p}" step="100" onchange="setP(${ci},${ii},this.value)">
+    </div>`).join("")}</div>`).join("");
+function setP(ci,ii,v){ DATA.categorias[ci].items[ii].p = Number(v)||0; }
+function guardar(){
+  localStorage.setItem(KEY, JSON.stringify(DATA.categorias));
+  document.getElementById("ok").textContent = "Cambios guardados en este dispositivo ✓";
+}
+function exportar(){
+  const blob = new Blob([JSON.stringify(DATA,null,2)],{type:"application/json"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = DATA.slug + ".json"; a.click();
+}
+</script></div></body></html>

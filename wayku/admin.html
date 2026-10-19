@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Panel · Wayk&#x27;u</title>
+<style>
+body{font-family:Inter,system-ui,sans-serif;background:#0c0e12;color:#e9ecf1;margin:0;padding:22px;line-height:1.5}
+.wrap{max-width:720px;margin:0 auto}
+.kick{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#6b7280;margin-bottom:8px}
+h1{font-size:25px;margin:0 0 6px;font-weight:700;letter-spacing:-.02em}
+.sub{color:#8b93a1;font-size:13px;margin-bottom:26px}
+.box{background:#14171d;border:1px solid #232833;border-radius:16px;padding:16px;margin-bottom:14px}
+h2{font-size:10.5px;text-transform:uppercase;letter-spacing:.14em;color:#7c8494;margin:0 0 10px;font-weight:600}
+.row{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid #1e222b}
+.row:last-child{border:0}
+.row .n{flex:1;font-size:14px}
+input[type=number]{width:112px;background:#0c0e12;color:#e9ecf1;border:1px solid #2a303c;border-radius:9px;
+  padding:8px 10px;font-size:14px;text-align:right;font-family:inherit}
+button{background:#3b82f6;color:#fff;border:0;padding:12px 18px;border-radius:11px;font-weight:600;
+  font-size:14px;cursor:pointer;font-family:inherit}
+button.sec{background:#1d222c;color:#c9cfda}
+button:active{transform:scale(.98)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.ok{color:#34d399;font-size:13px;margin-top:12px;min-height:18px}
+</style></head><body><div class="wrap">
+<div class="kick">Panel del local</div>
+<h1>Wayk&#x27;u</h1>
+<div class="sub">Cambie precios y disponibilidad sin depender de nadie.</div>
+<div id="app"></div>
+<div class="actions">
+  <button onclick="guardar()">Guardar cambios</button>
+  <button class="sec" onclick="exportar()">Descargar carta</button>
+  <button class="sec" onclick="location.href='index.html'">Ver carta</button>
+</div>
+<div class="ok" id="ok"></div>
+<script>
+const DATA = {"slug": "wayku", "nombre": "Wayk'u", "tipo": "Peruano & Mariscos", "rating": "4.5", "direccion": "Av. Las Perdices 2990, Loc 16", "telefono": "56987393681", "wa_display": "+56 9 8739 3681", "horarios": {"lun": [12, 22], "mar": [12, 22], "mie": [12, 22], "jue": [12, 23], "vie": [12, 23], "sab": [12, 23], "dom": [12, 22]}, "tema": {"bg": "#0b1410", "card": "#142019", "acento": "#2a9d8f", "acento2": "#e9c46a", "texto": "#eef5f2", "fuente": "Poppins", "hero": "https://images.unsplash.com/photo-1559847844-5315695dadae?w=1400&q=70"}, "lema": "Del mar a su mesa", "categorias": [{"n": "Del mar", "items": [{"n": "Ceviche Wayk'u", "d": "Pescado, mariscos, leche de tigre picante", "p": 12900, "tag": "Top"}, {"n": "Tiradito nikkei", "d": "Salmón, salsa de ají amarillo", "p": 11900}, {"n": "Jalea mixta", "d": "Para compartir", "p": 15900}]}, {"n": "Cocina criolla", "items": [{"n": "Arroz con pato", "d": "Cilantro, cerveza negra", "p": 13900}, {"n": "Lomo saltado", "d": "", "p": 11500}, {"n": "Tacu tacu con lomo", "d": "", "p": 12900, "tag": "Top"}]}, {"n": "Bebidas", "items": [{"n": "Pisco sour", "d": "Clásico peruano", "p": 5900}, {"n": "Chicha morada", "d": "Jarra", "p": 4900}]}]};
+const KEY = "admin_"+DATA.slug;
+const saved = JSON.parse(localStorage.getItem(KEY)||"null");
+if(saved){ DATA.categorias = saved; }
+document.getElementById("app").innerHTML = DATA.categorias.map((c,ci)=>`
+  <div class="box"><h2>${c.n}</h2>
+  ${c.items.map((it,ii)=>`<div class="row">
+      <span class="n">${it.n}</span>
+      <input type="number" value="${it.p}" step="100" onchange="setP(${ci},${ii},this.value)">
+    </div>`).join("")}</div>`).join("");
+function setP(ci,ii,v){ DATA.categorias[ci].items[ii].p = Number(v)||0; }
+function guardar(){
+  localStorage.setItem(KEY, JSON.stringify(DATA.categorias));
+  document.getElementById("ok").textContent = "Cambios guardados en este dispositivo ✓";
+}
+function exportar(){
+  const blob = new Blob([JSON.stringify(DATA,null,2)],{type:"application/json"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = DATA.slug + ".json"; a.click();
+}
+</script></div></body></html>
