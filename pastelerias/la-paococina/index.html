@@ -18,7 +18,7 @@
   --bg:#10120e; --card:#191c15; --accent:#a3b18a; --accent2:#dad7cd;
   --tx:#f1f3ec;
   --muted:color-mix(in srgb, var(--tx) 62%, transparent);
-  --faint:color-mix(in srgb, var(--tx) 40%, transparent);
+  --faint:color-mix(in srgb, var(--tx) 55%, transparent);
   --line:color-mix(in srgb, var(--tx) 11%, transparent);
   --raise:color-mix(in srgb, var(--tx) 5%, transparent);
   --r:20px;
@@ -52,7 +52,8 @@ a{color:inherit;text-decoration:none}
 .status.closed .dot{background:#ff6b6b;box-shadow:0 0 8px #ff6b6b}
 .hero-copy{padding-bottom:4px}
 .hero-copy .kicker{display:flex;align-items:center;gap:9px;font-size:11px;letter-spacing:.2em;
-  text-transform:uppercase;color:#fff;opacity:.85;margin-bottom:10px;font-weight:500}
+  text-transform:uppercase;color:#fff;opacity:1;margin-bottom:10px;font-weight:600;
+  text-shadow:0 2px 12px rgba(0,0,0,.75)}
 .kicker .bar{width:26px;height:1px;background:currentColor;opacity:.7}
 .hero h1{margin:0;font-size:clamp(46px,13vw,86px);color:#fff;text-shadow:0 4px 34px rgba(0,0,0,.55)}
 .hero .lema{margin:10px 0 0;font-size:14.5px;color:rgba(255,255,255,.92);max-width:34ch;
@@ -69,7 +70,7 @@ a{color:inherit;text-decoration:none}
 .cell{padding:14px 12px;text-align:center;border-right:1px solid var(--line)}
 .cell:last-child{border-right:0}
 .cell .v{font-size:15px;font-weight:700;letter-spacing:-.01em}
-.cell .l{font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);margin-top:3px}
+.cell .l{font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);margin-top:3px;font-weight:600}
 
 /* NAV */
 .nav{position:sticky;top:0;z-index:40;margin-top:22px;
