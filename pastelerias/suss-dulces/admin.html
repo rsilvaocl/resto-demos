@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Panel · Süss Dulces Tentaciones</title>
+<style>
+body{font-family:Inter,system-ui,sans-serif;background:#0c0e12;color:#e9ecf1;margin:0;padding:22px;line-height:1.5}
+.wrap{max-width:720px;margin:0 auto}
+.kick{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#6b7280;margin-bottom:8px}
+h1{font-size:25px;margin:0 0 6px;font-weight:700;letter-spacing:-.02em}
+.sub{color:#8b93a1;font-size:13px;margin-bottom:26px}
+.box{background:#14171d;border:1px solid #232833;border-radius:16px;padding:16px;margin-bottom:14px}
+h2{font-size:10.5px;text-transform:uppercase;letter-spacing:.14em;color:#7c8494;margin:0 0 10px;font-weight:600}
+.row{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid #1e222b}
+.row:last-child{border:0}
+.row .n{flex:1;font-size:14px}
+input[type=number]{width:112px;background:#0c0e12;color:#e9ecf1;border:1px solid #2a303c;border-radius:9px;
+  padding:8px 10px;font-size:14px;text-align:right;font-family:inherit}
+button{background:#3b82f6;color:#fff;border:0;padding:12px 18px;border-radius:11px;font-weight:600;
+  font-size:14px;cursor:pointer;font-family:inherit}
+button.sec{background:#1d222c;color:#c9cfda}
+button:active{transform:scale(.98)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.ok{color:#34d399;font-size:13px;margin-top:12px;min-height:18px}
+</style></head><body><div class="wrap">
+<div class="kick">Panel del local</div>
+<h1>Süss Dulces Tentaciones</h1>
+<div class="sub">Cambie precios y disponibilidad sin depender de nadie.</div>
+<div id="app"></div>
+<div class="actions">
+  <button onclick="guardar()">Guardar cambios</button>
+  <button class="sec" onclick="exportar()">Descargar carta</button>
+  <button class="sec" onclick="location.href='index.html'">Ver carta</button>
+</div>
+<div class="ok" id="ok"></div>
+<script>
+const DATA = {"slug": "suss-dulces", "nombre": "Süss Dulces Tentaciones", "tipo": "Pastelería y cafetería", "rating": "4.8", "direccion": "Av. Las Perdices 2990, Local 2, Peñalolén", "telefono": "56962361255", "wa_display": "+56 9 6236 1255", "minutos": "Retiro en tienda", "horarios": {"lun": [9, 20], "mar": [9, 20], "mie": [9, 20], "jue": [9, 20], "vie": [9, 21], "sab": [10, 21], "dom": [10, 18]}, "tema": {"bg": "#120f16", "card": "#1b1721", "acento": "#c8b6ff", "acento2": "#ffd6e0", "texto": "#f7f3ff", "fuente": "Playfair Display", "hero": "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=1400&q=70"}, "lema": "Postres de vitrina y café para quedarse", "categorias": [{"n": "Tortas por porción", "items": [{"n": "Cheesecake de frambuesa", "d": "Base de galleta y coulis", "p": 3900, "tag": "Top"}, {"n": "Torta tres leches", "d": "Bizcocho bañado, merengue", "p": 3600}, {"n": "Pie de limón", "d": "Masa quebrada y merengue italiano", "p": 3800}]}, {"n": "Individuales", "items": [{"n": "Copa de chocolate", "d": "Mousse y crema chantilly", "p": 3200}, {"n": "Tarta de frutos rojos", "d": "Crema pastelera y fruta fresca", "p": 3400}, {"n": "Macaron", "d": "Unidad, sabores del día", "p": 1500}]}, {"n": "Para llevar", "items": [{"n": "Caja de 6 macarons", "d": "Surtido de temporada", "p": 8500}, {"n": "Cheesecake entero", "d": "10 porciones, 24 horas de anticipación", "p": 22900, "tag": "A pedido"}]}, {"n": "Café", "items": [{"n": "Espresso", "d": "Doble shot", "p": 1900}, {"n": "Latte", "d": "Leche texturizada", "p": 2700}, {"n": "Mocha", "d": "Chocolate y espresso", "p": 2900}]}]};
+const KEY = "admin_"+DATA.slug;
+const saved = JSON.parse(localStorage.getItem(KEY)||"null");
+if(saved){ DATA.categorias = saved; }
+document.getElementById("app").innerHTML = DATA.categorias.map((c,ci)=>`
+  <div class="box"><h2>${c.n}</h2>
+  ${c.items.map((it,ii)=>`<div class="row">
+      <span class="n">${it.n}</span>
+      <input type="number" value="${it.p}" step="100" onchange="setP(${ci},${ii},this.value)">
+    </div>`).join("")}</div>`).join("");
+function setP(ci,ii,v){ DATA.categorias[ci].items[ii].p = Number(v)||0; }
+function guardar(){
+  localStorage.setItem(KEY, JSON.stringify(DATA.categorias));
+  document.getElementById("ok").textContent = "Cambios guardados en este dispositivo ✓";
+}
+function exportar(){
+  const blob = new Blob([JSON.stringify(DATA,null,2)],{type:"application/json"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = DATA.slug + ".json"; a.click();
+}
+</script></div></body></html>

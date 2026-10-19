@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Panel · La PaoCocina</title>
+<style>
+body{font-family:Inter,system-ui,sans-serif;background:#0c0e12;color:#e9ecf1;margin:0;padding:22px;line-height:1.5}
+.wrap{max-width:720px;margin:0 auto}
+.kick{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#6b7280;margin-bottom:8px}
+h1{font-size:25px;margin:0 0 6px;font-weight:700;letter-spacing:-.02em}
+.sub{color:#8b93a1;font-size:13px;margin-bottom:26px}
+.box{background:#14171d;border:1px solid #232833;border-radius:16px;padding:16px;margin-bottom:14px}
+h2{font-size:10.5px;text-transform:uppercase;letter-spacing:.14em;color:#7c8494;margin:0 0 10px;font-weight:600}
+.row{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid #1e222b}
+.row:last-child{border:0}
+.row .n{flex:1;font-size:14px}
+input[type=number]{width:112px;background:#0c0e12;color:#e9ecf1;border:1px solid #2a303c;border-radius:9px;
+  padding:8px 10px;font-size:14px;text-align:right;font-family:inherit}
+button{background:#3b82f6;color:#fff;border:0;padding:12px 18px;border-radius:11px;font-weight:600;
+  font-size:14px;cursor:pointer;font-family:inherit}
+button.sec{background:#1d222c;color:#c9cfda}
+button:active{transform:scale(.98)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.ok{color:#34d399;font-size:13px;margin-top:12px;min-height:18px}
+</style></head><body><div class="wrap">
+<div class="kick">Panel del local</div>
+<h1>La PaoCocina</h1>
+<div class="sub">Cambie precios y disponibilidad sin depender de nadie.</div>
+<div id="app"></div>
+<div class="actions">
+  <button onclick="guardar()">Guardar cambios</button>
+  <button class="sec" onclick="exportar()">Descargar carta</button>
+  <button class="sec" onclick="location.href='index.html'">Ver carta</button>
+</div>
+<div class="ok" id="ok"></div>
+<script>
+const DATA = {"slug": "la-paococina", "nombre": "La PaoCocina", "tipo": "Panadería de masa madre y café", "rating": "5.0", "direccion": "Av. Consistorial 2630, Peñalolén", "telefono": "56979509072", "wa_display": "+56 9 7950 9072", "minutos": "Horneado del día", "horarios": {"lun": [8, 19], "mar": [8, 19], "mie": [8, 19], "jue": [8, 19], "vie": [8, 20], "sab": [8, 20], "dom": [9, 14]}, "tema": {"bg": "#10120e", "card": "#191c15", "acento": "#a3b18a", "acento2": "#dad7cd", "texto": "#f1f3ec", "fuente": "Cormorant Garamond", "hero": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1400&q=70"}, "lema": "Masa madre, horno de barro y café de barrio", "categorias": [{"n": "Panes de masa madre", "items": [{"n": "Hogaza de masa madre", "d": "Fermentación de 24 horas, corteza gruesa", "p": 4500, "tag": "Del día"}, {"n": "Pan de centeno", "d": "Hogaza de 800 g, semillas de lino", "p": 5200}, {"n": "Focaccia de romero", "d": "Aceite de oliva y sal de mar", "p": 4800}]}, {"n": "Viennoiserie", "items": [{"n": "Croissant de mantequilla", "d": "Laminado a mano", "p": 2200, "tag": "Recién horneado"}, {"n": "Pain au chocolat", "d": "Chocolate 60%", "p": 2500}, {"n": "Cinnamon roll", "d": "Canela y glaseado suave", "p": 2800}]}, {"n": "Dulces de vitrina", "items": [{"n": "Kuchen de manzana", "d": "Porción, masa quebrada", "p": 3400}, {"n": "Alfajor de maicena", "d": "Relleno de manjar", "p": 1200}, {"n": "Brownie", "d": "Chocolate intenso y nuez", "p": 2400}]}, {"n": "Café", "items": [{"n": "Espresso", "d": "Tueste de origen", "p": 1800}, {"n": "Flat white", "d": "Doble shot y leche texturizada", "p": 2600}, {"n": "Cappuccino", "d": "Espuma cremosa", "p": 2400}]}, {"n": "Para llevar", "items": [{"n": "Bolsa de pan del día", "d": "Surtido de 4 panes pequeños", "p": 3500}]}]};
+const KEY = "admin_"+DATA.slug;
+const saved = JSON.parse(localStorage.getItem(KEY)||"null");
+if(saved){ DATA.categorias = saved; }
+document.getElementById("app").innerHTML = DATA.categorias.map((c,ci)=>`
+  <div class="box"><h2>${c.n}</h2>
+  ${c.items.map((it,ii)=>`<div class="row">
+      <span class="n">${it.n}</span>
+      <input type="number" value="${it.p}" step="100" onchange="setP(${ci},${ii},this.value)">
+    </div>`).join("")}</div>`).join("");
+function setP(ci,ii,v){ DATA.categorias[ci].items[ii].p = Number(v)||0; }
+function guardar(){
+  localStorage.setItem(KEY, JSON.stringify(DATA.categorias));
+  document.getElementById("ok").textContent = "Cambios guardados en este dispositivo ✓";
+}
+function exportar(){
+  const blob = new Blob([JSON.stringify(DATA,null,2)],{type:"application/json"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = DATA.slug + ".json"; a.click();
+}
+</script></div></body></html>

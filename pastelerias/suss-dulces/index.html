@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Süss Dulces Tentaciones · Catálogo y encargos</title>
+<meta name="description" content="Postres de vitrina y café para quedarse Catálogo digital de Süss Dulces Tentaciones, Pastelería y cafetería en Peñalolén. Encarga directo por WhatsApp.">
+<meta name="theme-color" content="#120f16">
+<meta property="og:title" content="Süss Dulces Tentaciones · Catálogo y encargos">
+<meta property="og:description" content="Postres de vitrina y café para quedarse">
+<meta property="og:image" content="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=1400&amp;q=70">
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#120f16; --card:#1b1721; --accent:#c8b6ff; --accent2:#ffd6e0;
+  --tx:#f7f3ff;
+  --muted:color-mix(in srgb, var(--tx) 62%, transparent);
+  --faint:color-mix(in srgb, var(--tx) 40%, transparent);
+  --line:color-mix(in srgb, var(--tx) 11%, transparent);
+  --raise:color-mix(in srgb, var(--tx) 5%, transparent);
+  --r:20px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:'Inter',system-ui,sans-serif;
+  font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;padding-bottom:110px}
+img{max-width:100%;display:block}
+button{font-family:inherit;border:0;cursor:pointer;background:none;color:inherit}
+a{color:inherit;text-decoration:none}
+.display{font-family:'Playfair Display',Georgia,serif;font-weight:400;letter-spacing:-.01em;line-height:.98}
+
+/* HERO */
+.hero{position:relative;height:clamp(340px,58vh,480px);overflow:hidden;
+  background:linear-gradient(160deg,var(--accent),var(--accent2))}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transform:scale(1.06);filter:saturate(.85) contrast(1.05)}
+.hero-veil{position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(0,0,0,.42) 0%,rgba(0,0,0,.18) 38%,rgba(0,0,0,.72) 78%,var(--bg) 100%)}
+.hero-noise{position:absolute;inset:0;opacity:.16;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E")}
+.hero-in{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;
+  max-width:1040px;margin:0 auto;padding:22px 22px 26px;width:100%}
+.top-row{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.brand-mark{font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#fff;opacity:.92}
+.status{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:600;
+  background:rgba(10,10,10,.42);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.18);color:#fff;padding:7px 12px;border-radius:999px;white-space:nowrap}
+.dot{width:6px;height:6px;border-radius:50%;background:#3ddc84;box-shadow:0 0 8px #3ddc84}
+.status.closed .dot{background:#ff6b6b;box-shadow:0 0 8px #ff6b6b}
+.hero-copy{padding-bottom:4px}
+.hero-copy .kicker{display:flex;align-items:center;gap:9px;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;color:#fff;opacity:.85;margin-bottom:10px;font-weight:500}
+.kicker .bar{width:26px;height:1px;background:currentColor;opacity:.7}
+.hero h1{margin:0;font-size:clamp(46px,13vw,86px);color:#fff;text-shadow:0 4px 34px rgba(0,0,0,.55)}
+.hero .lema{margin:10px 0 0;font-size:14.5px;color:rgba(255,255,255,.92);max-width:34ch;
+  text-shadow:0 2px 14px rgba(0,0,0,.6)}
+.demo-chip{position:absolute;top:20px;right:22px;font-size:9px;letter-spacing:.16em;font-weight:700;
+  text-transform:uppercase;color:#fff;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.22);
+  padding:5px 9px;border-radius:5px;backdrop-filter:blur(8px)}
+
+/* STRIP */
+.strip{max-width:1040px;margin:-30px auto 0;padding:0 18px;position:relative;z-index:5}
+.strip-in{display:grid;grid-template-columns:repeat(3,1fr);background:var(--card);
+  border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+  box-shadow:0 18px 44px rgba(0,0,0,.22)}
+.cell{padding:14px 12px;text-align:center;border-right:1px solid var(--line)}
+.cell:last-child{border-right:0}
+.cell .v{font-size:15px;font-weight:700;letter-spacing:-.01em}
+.cell .l{font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);margin-top:3px}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:40;margin-top:22px;
+  background:color-mix(in srgb,var(--bg) 90%,transparent);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1040px;margin:0 auto;display:flex;gap:26px;overflow-x:auto;padding:0 22px;
+  scrollbar-width:none}
+.nav-in::-webkit-scrollbar{display:none}
+.tab{position:relative;white-space:nowrap;font-size:12px;font-weight:600;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--faint);padding:17px 0;transition:color .2s}
+.tab.on{color:var(--tx)}
+.tab.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--accent)}
+
+/* DESTACADOS */
+.feat{max-width:1040px;margin:0 auto;padding:26px 22px 6px}
+.sect-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:14px}
+.sect-head h2{margin:0;font-size:24px;font-family:'Playfair Display',Georgia,serif;font-weight:400}
+.sect-head span{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.rail{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory;
+  scrollbar-width:none;margin:0 -22px;padding-left:22px;padding-right:22px}
+.rail::-webkit-scrollbar{display:none}
+.fcard{flex:0 0 63%;max-width:270px;scroll-snap-align:start;background:var(--card);
+  border:1px solid var(--line);border-radius:16px;padding:15px;position:relative;overflow:hidden}
+.fcard::after{content:"";position:absolute;inset:0;border-radius:16px;pointer-events:none;
+  background:radial-gradient(120% 80% at 100% 0%,color-mix(in srgb,var(--accent) 16%,transparent),transparent 60%)}
+.fcard .ft{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:6px}
+.fcard .fn{font-size:15.5px;font-weight:600;line-height:1.25;letter-spacing:-.01em}
+.fcard .fd{font-size:11.5px;color:var(--muted);margin-top:4px;min-height:32px;line-height:1.35}
+.fcard .fp{font-size:16px;font-weight:700;margin-top:9px}
+.fbtn{margin-top:9px;width:100%;padding:8px;border-radius:9px;background:var(--accent);color:#fff;
+  font-size:12px;font-weight:700}
+
+/* MENÚ */
+.menu{max-width:1040px;margin:0 auto;padding:10px 22px 40px}
+.cat{padding-top:30px;scroll-margin-top:58px}
+.cat-head{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+.cat-head h3{margin:0;font-size:26px;font-family:'Playfair Display',Georgia,serif;font-weight:400}
+.cat-head .rule{flex:1;height:1px;background:var(--line)}
+.cat-head .cnt{font-size:10.5px;color:var(--faint);letter-spacing:.1em}
+.dish{display:flex;align-items:flex-start;gap:14px;padding:17px 2px;border-bottom:1px solid var(--line)}
+.dish:last-child{border-bottom:0}
+.dish-main{flex:1;min-width:0}
+.dish h4{margin:0;font-size:15.5px;font-weight:600;letter-spacing:-.012em;display:flex;align-items:center;
+  gap:9px;flex-wrap:wrap;line-height:1.3}
+.badge-tag{font-size:8.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);
+  border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);padding:2.5px 6px;border-radius:4px}
+.dish p{margin:5px 0 0;font-size:12.8px;color:var(--muted);line-height:1.42;max-width:46ch}
+.dish .p{font-size:15px;font-weight:700;letter-spacing:-.01em;white-space:nowrap;padding-top:1px}
+.add{width:34px;height:34px;border-radius:50%;background:var(--raise);color:var(--tx);
+  border:1px solid var(--line);display:grid;place-items:center;flex:none;margin-top:-2px;
+  transition:transform .14s ease,background .18s,color .18s,border-color .18s}
+.add svg{width:14px;height:14px}
+.add:active{transform:scale(.9);background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* FOOTER */
+footer{max-width:1040px;margin:20px auto 0;padding:34px 22px 46px;border-top:1px solid var(--line)}
+.f-grid{display:grid;gap:26px}
+@media(min-width:640px){.f-grid{grid-template-columns:1.2fr 1fr}}
+.f-title{font-size:22px;font-family:'Playfair Display',Georgia,serif;margin:0 0 8px;font-weight:400}
+.f-small{font-size:12.5px;color:var(--muted);line-height:1.75}
+.f-small strong{color:var(--tx);font-weight:600}
+.hours{list-style:none;padding:0;margin:0;font-size:12.5px}
+.hours li{display:flex;justify-content:space-between;padding:5px 0;color:var(--muted);
+  border-bottom:1px dashed var(--line)}
+.hours li.today{color:var(--tx);font-weight:600}
+.f-credit{margin-top:26px;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+
+/* BARRA */
+.bar{position:fixed;left:14px;right:14px;bottom:14px;z-index:55;max-width:520px;margin:0 auto;
+  background:var(--accent);color:#fff;border-radius:15px;padding:15px 18px;display:none;
+  align-items:center;justify-content:space-between;box-shadow:0 16px 40px rgba(0,0,0,.42);
+  font-size:13.5px;font-weight:700}
+.bar.show{display:flex;animation:up .32s cubic-bezier(.2,.9,.25,1)}
+@keyframes up{from{transform:translateY(24px);opacity:0}to{transform:translateY(0);opacity:1}}
+
+/* DRAWER */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.62);backdrop-filter:blur(4px);z-index:60;
+  opacity:0;pointer-events:none;transition:opacity .26s}
+.overlay.show{opacity:1;pointer-events:auto}
+.drawer{position:fixed;left:0;right:0;bottom:0;z-index:70;background:var(--bg);
+  border-radius:24px 24px 0 0;max-height:93vh;overflow-y:auto;max-width:560px;margin:0 auto;
+  transform:translateY(103%);transition:transform .32s cubic-bezier(.2,.85,.25,1);
+  border-top:1px solid var(--line)}
+.drawer.show{transform:translateY(0)}
+.dhead{position:sticky;top:0;background:var(--bg);z-index:3;padding:18px 20px 14px;
+  border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+.dhead h3{margin:0;font-size:27px;font-family:'Playfair Display',Georgia,serif;font-weight:400}
+.x{width:32px;height:32px;border-radius:50%;background:var(--raise);display:grid;place-items:center;font-size:15px}
+.dbody{padding:16px 20px 30px}
+.line{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
+.line .n{flex:1;font-size:13.5px;line-height:1.35}
+.line .p{font-size:13.5px;font-weight:700;white-space:nowrap}
+.qty{display:flex;align-items:center;gap:2px;background:var(--raise);border-radius:999px;padding:3px}
+.qty button{width:25px;height:25px;border-radius:50%;font-size:15px;font-weight:600;color:var(--tx);
+  display:grid;place-items:center}
+.qty span{min-width:16px;text-align:center;font-size:12.5px;font-weight:700}
+.total-row{display:flex;justify-content:space-between;align-items:baseline;padding:20px 0 4px}
+.total-row .l{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.total-row .v{font-size:26px;font-family:'Playfair Display',Georgia,serif}
+.hint{font-size:11.5px;color:var(--faint);margin:2px 0 20px;line-height:1.55}
+.field{margin-bottom:12px}
+.field label{display:block;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--faint);margin-bottom:6px;font-weight:600}
+.field input,.field textarea{width:100%;padding:13px 14px;border-radius:12px;border:1px solid var(--line);
+  background:var(--card);color:var(--tx);font-size:15px;font-family:inherit;outline:none}
+.field input:focus,.field textarea:focus{border-color:var(--accent)}
+.field textarea{resize:vertical;min-height:58px}
+.seg{display:flex;gap:6px;margin-bottom:16px;background:var(--raise);padding:4px;border-radius:13px}
+.seg button{flex:1;padding:10px;border-radius:9px;font-size:12.5px;font-weight:600;color:var(--muted);transition:.18s}
+.seg button.on{background:var(--card);color:var(--tx);box-shadow:0 2px 10px rgba(0,0,0,.2)}
+.send{width:100%;padding:17px;border-radius:13px;background:var(--accent);color:#fff;
+  font-size:15px;font-weight:700;margin-top:4px}
+.legal{font-size:10.5px;color:var(--faint);text-align:center;margin-top:13px;line-height:1.6}
+
+.toast{position:fixed;left:50%;bottom:104px;transform:translateX(-50%) translateY(16px);
+  background:var(--tx);color:var(--bg);padding:11px 18px;border-radius:999px;font-size:12.5px;
+  font-weight:600;opacity:0;transition:.24s;z-index:80;pointer-events:none;white-space:nowrap;
+  box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media(min-width:760px){
+  body{padding-bottom:40px}
+  .bar{display:none!important}
+  .hero{height:520px}
+  .hero-in{padding:30px 34px 34px}
+  .strip,.menu,.feat,footer{padding-left:34px;padding-right:34px}
+  .strip{margin-top:-34px}
+  .nav-in{padding:0 34px;gap:34px}
+  .rail{margin:0;padding:0}
+  .fcard{flex:0 0 30%}
+  .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
+  .cell{padding:18px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <img class="hero-img" src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=1400&amp;q=70" alt="" onerror="this.style.display='none'">
+  <div class="hero-veil"></div>
+  <div class="hero-noise"></div>
+  <span class="demo-chip">Demo</span>
+  <div class="hero-in">
+    <div class="top-row">
+      <div class="brand-mark">Pastelería y cafetería</div>
+      <div class="status" id="status"><span class="dot"></span><span id="statusTxt">—</span></div>
+    </div>
+    <div class="hero-copy">
+      <div class="kicker"><span class="bar"></span>Peñalolén · Santiago</div>
+      <h1 class="display">Süss Dulces Tentaciones</h1>
+      <p class="lema">Postres de vitrina y café para quedarse</p>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="strip-in">
+    <div class="cell"><div class="v">★ 4.8</div><div class="l">Google</div></div>
+    <div class="cell"><div class="v">Retiro en tienda</div><div class="l">Preparación</div></div>
+    <div class="cell"><div class="v" id="priceCell">—</div><div class="l">Pedido directo</div></div>
+  </div>
+</div>
+
+<nav class="nav"><div class="nav-in" id="nav"></div></nav>
+
+<div class="feat" id="featWrap">
+  <div class="sect-head"><h2>Lo que hay que probar</h2><span>Recomendados</span></div>
+  <div class="rail" id="rail"></div>
+</div>
+
+<main class="menu" id="menu"></main>
+
+<footer>
+  <div class="f-grid">
+    <div>
+      <h4 class="f-title">Visítanos</h4>
+      <div class="f-small">
+        <strong>Av. Las Perdices 2990, Local 2, Peñalolén</strong><br>
+        +56 9 6236 1255<br>
+        Encargos por WhatsApp, con fecha y hora de entrega.
+      </div>
+      <div class="f-credit">Catálogo digital · Encargos directos</div>
+    </div>
+    <div>
+      <h4 class="f-title">Horarios</h4>
+      <ul class="hours" id="hours"></ul>
+      <div class="f-small" style="margin-top:12px"><a href="admin.html">Panel del local →</a></div>
+    </div>
+  </div>
+</footer>
+
+<div class="bar" id="bar" onclick="openCart()">
+  <span id="barTxt">Ver encargo</span><span id="barPrice"></span>
+</div>
+
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<div class="drawer" id="drawer">
+  <div class="dhead"><h3>Tu encargo</h3><button class="x" onclick="closeCart()">✕</button></div>
+  <div class="dbody">
+    <div id="lines"></div>
+    <div class="total-row"><span class="l">Total</span><span class="v" id="total">$0</span></div>
+    <div class="hint">El encargo se envía por WhatsApp con la fecha y hora en que lo necesita.</div>
+
+    <div class="seg">
+      <button class="on" data-tipo="delivery" onclick="setTipo('delivery')">Despacho</button>
+      <button data-tipo="retiro" onclick="setTipo('retiro')">Retiro en tienda</button>
+    </div>
+    <div class="field"><label>Nombre</label><input id="f_nombre" placeholder="Su nombre" autocomplete="name"></div>
+    <div class="field"><label>Teléfono</label><input id="f_tel" placeholder="+56 9 ..." inputmode="tel" autocomplete="tel"></div>
+    <div class="field" id="f_dir_wrap"><label>Dirección</label><input id="f_dir" placeholder="Calle, número, depto"></div>
+    <div class="field"><label>Fecha de entrega</label><input type="date" id="f_fecha"></div>
+    <div class="field"><label>Comentario</label><textarea id="f_nota" placeholder="Sin cebolla, tocar el timbre, etc."></textarea></div>
+    <button class="send" onclick="enviar()">Enviar encargo por WhatsApp</button>
+    <div class="legal">El pago se coordina directo con el local</div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const DATA = {"slug": "suss-dulces", "nombre": "Süss Dulces Tentaciones", "tipo": "Pastelería y cafetería", "rating": "4.8", "direccion": "Av. Las Perdices 2990, Local 2, Peñalolén", "telefono": "56962361255", "wa_display": "+56 9 6236 1255", "minutos": "Retiro en tienda", "horarios": {"lun": [9, 20], "mar": [9, 20], "mie": [9, 20], "jue": [9, 20], "vie": [9, 21], "sab": [10, 21], "dom": [10, 18]}, "tema": {"bg": "#120f16", "card": "#1b1721", "acento": "#c8b6ff", "acento2": "#ffd6e0", "texto": "#f7f3ff", "fuente": "Playfair Display", "hero": "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=1400&q=70"}, "lema": "Postres de vitrina y café para quedarse", "categorias": [{"n": "Tortas por porción", "items": [{"n": "Cheesecake de frambuesa", "d": "Base de galleta y coulis", "p": 3900, "tag": "Top"}, {"n": "Torta tres leches", "d": "Bizcocho bañado, merengue", "p": 3600}, {"n": "Pie de limón", "d": "Masa quebrada y merengue italiano", "p": 3800}]}, {"n": "Individuales", "items": [{"n": "Copa de chocolate", "d": "Mousse y crema chantilly", "p": 3200}, {"n": "Tarta de frutos rojos", "d": "Crema pastelera y fruta fresca", "p": 3400}, {"n": "Macaron", "d": "Unidad, sabores del día", "p": 1500}]}, {"n": "Para llevar", "items": [{"n": "Caja de 6 macarons", "d": "Surtido de temporada", "p": 8500}, {"n": "Cheesecake entero", "d": "10 porciones, 24 horas de anticipación", "p": 22900, "tag": "A pedido"}]}, {"n": "Café", "items": [{"n": "Espresso", "d": "Doble shot", "p": 1900}, {"n": "Latte", "d": "Leche texturizada", "p": 2700}, {"n": "Mocha", "d": "Chocolate y espresso", "p": 2900}]}]};
+const WA = "56962361255";
+let cart = {};
+let tipo = "delivery";
+const fmt = n => "$" + Math.round(n).toLocaleString("es-CL");
+const hoyKey = ["dom","lun","mar","mie","jue","vie","sab"][new Date().getDay()];
+
+/* estado */
+(function(){
+  const h = new Date().getHours() + new Date().getMinutes()/60;
+  const r = DATA.horarios[hoyKey];
+  const abierto = r && h >= r[0] && h < Math.min(r[1], 24);
+  document.getElementById("status").classList.toggle("closed", !abierto);
+  document.getElementById("statusTxt").textContent = abierto ? "Abierto ahora" : "Cerrado";
+  document.getElementById("priceCell").textContent = abierto ? "Encargo directo" : "Fuera de horario";
+})();
+
+document.getElementById("hours").innerHTML = "<li class=\"today\"><span>Lunes</span><span>09:00 – 20:00</span></li><li><span>Martes</span><span>09:00 – 20:00</span></li><li><span>Miércoles</span><span>09:00 – 20:00</span></li><li><span>Jueves</span><span>09:00 – 20:00</span></li><li><span>Viernes</span><span>09:00 – 21:00</span></li><li><span>Sábado</span><span>10:00 – 21:00</span></li><li><span>Domingo</span><span>10:00 – 18:00</span></li>";
+
+/* menú */
+let idx = [];
+document.getElementById("nav").innerHTML = DATA.categorias.map((c,i)=>
+  `<button class="tab${i===0?" on":""}" onclick="goTo(${i})">${c.n}</button>`).join("");
+
+document.getElementById("menu").innerHTML = DATA.categorias.map((c,ci)=>`
+  <section class="cat" id="cat${ci}">
+    <div class="cat-head"><h3>${c.n}</h3><span class="rule"></span><span class="cnt">${c.items.length}</span></div>
+    <div class="menu-grid">
+    ${c.items.map((it,ii)=>{
+      const id = ci+"-"+ii; idx.push({id, it});
+      return `<article class="dish">
+        <div class="dish-main">
+          <h4>${it.n}${it.tag?`<span class="badge-tag">${it.tag}</span>`:""}</h4>
+          ${it.d?`<p>${it.d}</p>`:""}
+        </div>
+        <span class="p">${fmt(it.p)}</span>
+        <button class="add" onclick="add('${id}')" aria-label="Agregar ${it.n}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+      </article>`;
+    }).join("")}
+    </div>
+  </section>`).join("");
+
+/* destacados */
+const destacados = idx.filter(x=>x.it.tag);
+if(destacados.length){
+  document.getElementById("rail").innerHTML = destacados.slice(0,6).map(x=>`
+    <div class="fcard">
+      <div class="ft">${x.it.tag}</div>
+      <div class="fn">${x.it.n}</div>
+      <div class="fd">${x.it.d||""}</div>
+      <div class="fp">${fmt(x.it.p)}</div>
+      <button class="fbtn" onclick="add('${x.id}')">Agregar</button>
+    </div>`).join("");
+} else { document.getElementById("featWrap").style.display="none"; }
+
+/* navegación */
+function goTo(i){
+  document.getElementById("cat"+i).scrollIntoView({behavior:"smooth",block:"start"});
+  document.querySelectorAll(".tab").forEach((t,j)=>t.classList.toggle("on", j===i));
+}
+const obs = new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      const i = Number(e.target.id.replace("cat",""));
+      document.querySelectorAll(".tab").forEach((t,j)=>t.classList.toggle("on", j===i));
+    }
+  });
+},{rootMargin:"-45% 0px -50% 0px"});
+document.querySelectorAll(".cat").forEach(s=>obs.observe(s));
+
+/* carrito */
+function itemById(id){ return idx.find(x=>x.id===id).it; }
+function add(id){ cart[id]=(cart[id]||0)+1; save(); toast("Agregado · "+itemById(id).n); }
+function save(){ paint(); }
+function paint(){
+  const keys = Object.keys(cart).filter(k=>cart[k]>0);
+  let total=0, count=0;
+  keys.forEach(k=>{ total += itemById(k).p*cart[k]; count += cart[k]; });
+  document.getElementById("bar").classList.toggle("show", count>0);
+  document.getElementById("barTxt").textContent = count + (count===1?" producto":" productos");
+  document.getElementById("barPrice").textContent = fmt(total);
+  document.getElementById("total").textContent = fmt(total);
+  document.getElementById("lines").innerHTML = keys.length ? keys.map(k=>{
+    const it=itemById(k);
+    return `<div class="line">
+      <div class="qty"><button onclick="dec('${k}')">−</button><span>${cart[k]}</span><button onclick="inc('${k}')">+</button></div>
+      <span class="n">${it.n}</span><span class="p">${fmt(it.p*cart[k])}</span></div>`;
+  }).join("") : `<p style="color:var(--faint);text-align:center;padding:34px 0;font-size:13px">Todavía no eligió nada</p>`;
+}
+function inc(k){ cart[k]++; save(); }
+function dec(k){ cart[k]--; if(cart[k]<=0) delete cart[k]; save(); }
+function openCart(){
+  if(!Object.keys(cart).length){ toast("Elija algo del menú primero"); return; }
+  document.getElementById("overlay").classList.add("show");
+  document.getElementById("drawer").classList.add("show");
+  document.body.style.overflow="hidden";
+}
+function closeCart(){
+  document.getElementById("overlay").classList.remove("show");
+  document.getElementById("drawer").classList.remove("show");
+  document.body.style.overflow="";
+}
+function setTipo(t){
+  tipo=t;
+  document.querySelectorAll(".seg button").forEach(b=>b.classList.toggle("on",b.dataset.tipo===t));
+  document.getElementById("f_dir_wrap").style.display = t==="delivery"?"block":"none";
+}
+
+/* envío */
+function enviar(){
+  const nombre=document.getElementById("f_nombre").value.trim();
+  const tel=document.getElementById("f_tel").value.trim();
+  const dir=document.getElementById("f_dir").value.trim();
+  const nota=document.getElementById("f_nota").value.trim();
+  const fecha=document.getElementById("f_fecha").value;
+  const fechaTxt = fecha ? new Date(fecha+"T12:00:00").toLocaleDateString("es-CL",{weekday:"long",day:"numeric",month:"long"}) : "";
+  if(!nombre){toast("Falta su nombre");return;}
+  if(tel.replace(/\D/g,"").length<8){toast("Falta un teléfono válido");return;}
+  if(tipo==="delivery" && !dir){toast("Falta la dirección");return;}
+  if(!fecha){toast("Falta la fecha de entrega");return;}
+
+  let total=0, lineas=[];
+  Object.keys(cart).forEach(k=>{
+    const it=itemById(k); total+=it.p*cart[k];
+    lineas.push(`• ${cart[k]}x ${it.n} — ${fmt(it.p*cart[k])}`);
+  });
+
+  const msg = [
+    `*NUEVO ENCARGO — ${DATA.nombre}*`,
+    "",
+    `Cliente: ${nombre}`,
+    `Teléfono: ${tel}`,
+    tipo==="delivery" ? `Despacho a: ${dir}` : "Retiro en tienda",
+    `Fecha de entrega: ${fechaTxt}`,
+    "",
+    ...lineas,
+    "",
+    `*TOTAL: ${fmt(total)}*`,
+    nota ? `Nota: ${nota}` : "",
+    "",
+    "Encargo enviado desde el catálogo digital."
+  ].filter(Boolean).join("\n");
+
+  if(!WA){
+    navigator.clipboard.writeText(msg).catch(()=>{});
+    alert("Pedido generado:\n\n"+msg+"\n\n(Modo demostración: el WhatsApp del local se configura al activar la carta.)");
+    return;
+  }
+  window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(msg),"_blank");
+}
+function toast(t){
+  const el=document.getElementById("toast");
+  el.textContent=t; el.classList.add("show");
+  clearTimeout(window._tt); window._tt=setTimeout(()=>el.classList.remove("show"),1900);
+}
+paint(); setTipo("delivery");
+</script>
+</body>
+</html>

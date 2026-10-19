@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Panel · Pastelerías Peñalolén</title>
+<meta name="theme-color" content="#08090c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:Inter,system-ui,sans-serif;background:#08090c;color:#eef1f5;margin:0;
+  padding:0 16px 70px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:640px;margin:0 auto}
+header{position:sticky;top:0;z-index:10;background:rgba(8,9,12,.93);backdrop-filter:blur(14px);
+  padding:16px 0 12px;border-bottom:1px solid #1c2028;margin-bottom:18px}
+.k{font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#5f6673;margin-bottom:7px}
+h1{font-size:23px;margin:0;letter-spacing:-.02em}
+.count{font-size:12px;color:#8b93a1;margin-top:5px}
+.count b{color:#3ddc84}
+h2{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#6b7280;margin:26px 0 10px;font-weight:600}
+.card{background:#111318;border:1px solid #1f232c;border-radius:16px;padding:16px;margin-bottom:10px;transition:.2s}
+.card.done{opacity:.45}.card.done .tick{opacity:1;transform:scale(1)}
+.card.off{opacity:.55;border-style:dashed;background:#0d0f13}
+.row1{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.tick{width:22px;height:22px;border-radius:50%;background:#1d3a28;color:#3ddc84;font-size:12px;
+  display:grid;place-items:center;opacity:0;transform:scale(.6);transition:.2s;flex:none;font-weight:700}
+.n{font-weight:700;font-size:15.5px;letter-spacing:-.01em}
+.m{font-size:11.5px;color:#8b93a1;margin-top:2px}
+.go{display:block;text-align:center;margin-top:13px;padding:13px;border-radius:11px;background:#25d366;
+  color:#04140c;font-size:14px;font-weight:800;text-decoration:none;border:0;width:100%;
+  font-family:inherit;cursor:pointer}
+.go:active{transform:scale(.99)}
+.go.ghost{background:#1d222c;color:#c9cfda;font-weight:600;font-size:13px}
+.sub{display:flex;gap:16px;margin-top:11px;font-size:11.5px}
+.sub a,.sub button{color:#5f6673;text-decoration:none;background:none;border:0;padding:0;
+  font-family:inherit;font-size:11.5px;cursor:pointer}
+.sub button:hover,.sub a:hover{color:#8b93a1}
+.preview{display:none;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,monospace;
+  font-size:11px;line-height:1.65;color:#8b93a1;background:#0b0d11;border:1px solid #1c2028;
+  border-radius:10px;padding:12px;margin:11px 0 0;overflow-x:auto}
+.preview.on{display:block}
+.note{font-size:11px;color:#4c525d;line-height:1.9;margin-top:28px;border-top:1px solid #1c2028;padding-top:16px}
+.note b{color:#6b7280}
+.reset{background:none;border:0;color:#4c525d;font-size:10.5px;text-decoration:underline;
+  padding:0;margin-top:14px;font-family:inherit;cursor:pointer}
+</style></head>
+<body><div class="wrap">
+
+<header>
+  <div class="k">Salida a terreno</div>
+  <h1>Pastelerías · Peñalolén</h1>
+  <div class="count"><b id="hechos">0</b> de 5 enviados por WhatsApp</div>
+</header>
+
+<h2>Con teléfono · toque y se abre WhatsApp</h2>
+<article class="card" data-k="nanda-pasteleria" data-d="{&quot;slug&quot;: &quot;nanda-pasteleria&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, vivo ac\u00e1 en Pe\u00f1alol\u00e9n.\n\nVi que *Nanda Pasteler\u00eda* vende por Instagram y no tiene cat\u00e1logo propio. Le arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: sus productos con precio, el pedido con fecha de entrega y todo llegando ordenado a su WhatsApp.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/pastelerias/nanda-pasteleria/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Nanda Pasteler\u00eda&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Nanda Pastelería</div>
+      <div class="m">Pastelería artesanal · ★ 5.0</div>
+      <div class="m">Pje. 446, Casa 1532, Peñalolén</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <a class="go" href="https://wa.me/56964559033?text=Hola%2C%20buenas%20tardes.%20Soy%20Rub%C3%A9n%2C%20vivo%20ac%C3%A1%20en%20Pe%C3%B1alol%C3%A9n.%0A%0AVi%20que%20%2ANanda%20Pasteler%C3%ADa%2A%20vende%20por%20Instagram%20y%20no%20tiene%20cat%C3%A1logo%20propio.%20Le%20arm%C3%A9%20una%20muestra%20de%20c%C3%B3mo%20se%20ver%C3%ADa%3A%20sus%20productos%20con%20precio%2C%20el%20pedido%20con%20fecha%20de%20entrega%20y%20todo%20llegando%20ordenado%20a%20su%20WhatsApp.%0A%0AM%C3%ADrela%20ac%C3%A1%3A%20https%3A//rsilvaocl.github.io/resto-demos/pastelerias/nanda-pasteleria/%0A%0ASi%20le%20sirve%2C%20paso%205%20minutos%20y%20le%20explico.%20Si%20no%2C%20no%20le%20quito%20m%C3%A1s%20tiempo." target="_blank" rel="noopener">Enviar por WhatsApp</a>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/pastelerias/nanda-pasteleria/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, vivo acá en Peñalolén.
+
+Vi que *Nanda Pastelería* vende por Instagram y no tiene catálogo propio. Le armé una muestra de cómo se vería: sus productos con precio, el pedido con fecha de entrega y todo llegando ordenado a su WhatsApp.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/pastelerias/nanda-pasteleria/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article><article class="card" data-k="la-paococina" data-d="{&quot;slug&quot;: &quot;la-paococina&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, vivo ac\u00e1 en Pe\u00f1alol\u00e9n.\n\nVi que *La PaoCocina* vende por Instagram y no tiene cat\u00e1logo propio. Le arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: sus productos con precio, el pedido con fecha de entrega y todo llegando ordenado a su WhatsApp.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/pastelerias/la-paococina/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;La PaoCocina&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">La PaoCocina</div>
+      <div class="m">Panadería de masa madre y café · ★ 5.0</div>
+      <div class="m">Av. Consistorial 2630, Peñalolén</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <a class="go" href="https://wa.me/56979509072?text=Hola%2C%20buenas%20tardes.%20Soy%20Rub%C3%A9n%2C%20vivo%20ac%C3%A1%20en%20Pe%C3%B1alol%C3%A9n.%0A%0AVi%20que%20%2ALa%20PaoCocina%2A%20vende%20por%20Instagram%20y%20no%20tiene%20cat%C3%A1logo%20propio.%20Le%20arm%C3%A9%20una%20muestra%20de%20c%C3%B3mo%20se%20ver%C3%ADa%3A%20sus%20productos%20con%20precio%2C%20el%20pedido%20con%20fecha%20de%20entrega%20y%20todo%20llegando%20ordenado%20a%20su%20WhatsApp.%0A%0AM%C3%ADrela%20ac%C3%A1%3A%20https%3A//rsilvaocl.github.io/resto-demos/pastelerias/la-paococina/%0A%0ASi%20le%20sirve%2C%20paso%205%20minutos%20y%20le%20explico.%20Si%20no%2C%20no%20le%20quito%20m%C3%A1s%20tiempo." target="_blank" rel="noopener">Enviar por WhatsApp</a>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/pastelerias/la-paococina/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, vivo acá en Peñalolén.
+
+Vi que *La PaoCocina* vende por Instagram y no tiene catálogo propio. Le armé una muestra de cómo se vería: sus productos con precio, el pedido con fecha de entrega y todo llegando ordenado a su WhatsApp.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/pastelerias/la-paococina/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article><article class="card" data-k="dulces-delicias-taty" data-d="{&quot;slug&quot;: &quot;dulces-delicias-taty&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, vivo ac\u00e1 en Pe\u00f1alol\u00e9n.\n\nVi que *Dulces Delicias Taty* vende por Instagram y no tiene cat\u00e1logo propio. Le arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: sus productos con precio, el pedido con fecha de entrega y todo llegando ordenado a su WhatsApp.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/pastelerias/dulces-delicias-taty/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Dulces Delicias Taty&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Dulces Delicias Taty</div>
+      <div class="m">Pastelería artesanal y cóctel · ★ 5.0</div>
+      <div class="m">Pje. Cinco 1724, Peñalolén</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <a class="go" href="https://wa.me/56998472630?text=Hola%2C%20buenas%20tardes.%20Soy%20Rub%C3%A9n%2C%20vivo%20ac%C3%A1%20en%20Pe%C3%B1alol%C3%A9n.%0A%0AVi%20que%20%2ADulces%20Delicias%20Taty%2A%20vende%20por%20Instagram%20y%20no%20tiene%20cat%C3%A1logo%20propio.%20Le%20arm%C3%A9%20una%20muestra%20de%20c%C3%B3mo%20se%20ver%C3%ADa%3A%20sus%20productos%20con%20precio%2C%20el%20pedido%20con%20fecha%20de%20entrega%20y%20todo%20llegando%20ordenado%20a%20su%20WhatsApp.%0A%0AM%C3%ADrela%20ac%C3%A1%3A%20https%3A//rsilvaocl.github.io/resto-demos/pastelerias/dulces-delicias-taty/%0A%0ASi%20le%20sirve%2C%20paso%205%20minutos%20y%20le%20explico.%20Si%20no%2C%20no%20le%20quito%20m%C3%A1s%20tiempo." target="_blank" rel="noopener">Enviar por WhatsApp</a>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/pastelerias/dulces-delicias-taty/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, vivo acá en Peñalolén.
+
+Vi que *Dulces Delicias Taty* vende por Instagram y no tiene catálogo propio. Le armé una muestra de cómo se vería: sus productos con precio, el pedido con fecha de entrega y todo llegando ordenado a su WhatsApp.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/pastelerias/dulces-delicias-taty/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article><article class="card" data-k="nona-eliana" data-d="{&quot;slug&quot;: &quot;nona-eliana&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, vivo ac\u00e1 en Pe\u00f1alol\u00e9n.\n\nVi que *Nona Eliana Panetteria* vende por Instagram y no tiene cat\u00e1logo propio. Le arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: sus productos con precio, el pedido con fecha de entrega y todo llegando ordenado a su WhatsApp.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/pastelerias/nona-eliana/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Nona Eliana Panetteria&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Nona Eliana Panetteria</div>
+      <div class="m">Panadería de barrio · ★ 4.9</div>
+      <div class="m">Av. Consistorial 2341, Peñalolén</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <a class="go" href="https://wa.me/56933962208?text=Hola%2C%20buenas%20tardes.%20Soy%20Rub%C3%A9n%2C%20vivo%20ac%C3%A1%20en%20Pe%C3%B1alol%C3%A9n.%0A%0AVi%20que%20%2ANona%20Eliana%20Panetteria%2A%20vende%20por%20Instagram%20y%20no%20tiene%20cat%C3%A1logo%20propio.%20Le%20arm%C3%A9%20una%20muestra%20de%20c%C3%B3mo%20se%20ver%C3%ADa%3A%20sus%20productos%20con%20precio%2C%20el%20pedido%20con%20fecha%20de%20entrega%20y%20todo%20llegando%20ordenado%20a%20su%20WhatsApp.%0A%0AM%C3%ADrela%20ac%C3%A1%3A%20https%3A//rsilvaocl.github.io/resto-demos/pastelerias/nona-eliana/%0A%0ASi%20le%20sirve%2C%20paso%205%20minutos%20y%20le%20explico.%20Si%20no%2C%20no%20le%20quito%20m%C3%A1s%20tiempo." target="_blank" rel="noopener">Enviar por WhatsApp</a>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/pastelerias/nona-eliana/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, vivo acá en Peñalolén.
+
+Vi que *Nona Eliana Panetteria* vende por Instagram y no tiene catálogo propio. Le armé una muestra de cómo se vería: sus productos con precio, el pedido con fecha de entrega y todo llegando ordenado a su WhatsApp.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/pastelerias/nona-eliana/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article><article class="card" data-k="suss-dulces" data-d="{&quot;slug&quot;: &quot;suss-dulces&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, vivo ac\u00e1 en Pe\u00f1alol\u00e9n.\n\nVi que *S\u00fcss Dulces Tentaciones* vende por Instagram y no tiene cat\u00e1logo propio. Le arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: sus productos con precio, el pedido con fecha de entrega y todo llegando ordenado a su WhatsApp.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/pastelerias/suss-dulces/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;S\u00fcss Dulces Tentaciones&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Süss Dulces Tentaciones</div>
+      <div class="m">Pastelería y cafetería · ★ 4.8</div>
+      <div class="m">Av. Las Perdices 2990, Local 2, Peñalolén</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <a class="go" href="https://wa.me/56962361255?text=Hola%2C%20buenas%20tardes.%20Soy%20Rub%C3%A9n%2C%20vivo%20ac%C3%A1%20en%20Pe%C3%B1alol%C3%A9n.%0A%0AVi%20que%20%2AS%C3%BCss%20Dulces%20Tentaciones%2A%20vende%20por%20Instagram%20y%20no%20tiene%20cat%C3%A1logo%20propio.%20Le%20arm%C3%A9%20una%20muestra%20de%20c%C3%B3mo%20se%20ver%C3%ADa%3A%20sus%20productos%20con%20precio%2C%20el%20pedido%20con%20fecha%20de%20entrega%20y%20todo%20llegando%20ordenado%20a%20su%20WhatsApp.%0A%0AM%C3%ADrela%20ac%C3%A1%3A%20https%3A//rsilvaocl.github.io/resto-demos/pastelerias/suss-dulces/%0A%0ASi%20le%20sirve%2C%20paso%205%20minutos%20y%20le%20explico.%20Si%20no%2C%20no%20le%20quito%20m%C3%A1s%20tiempo." target="_blank" rel="noopener">Enviar por WhatsApp</a>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/pastelerias/suss-dulces/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, vivo acá en Peñalolén.
+
+Vi que *Süss Dulces Tentaciones* vende por Instagram y no tiene catálogo propio. Le armé una muestra de cómo se vería: sus productos con precio, el pedido con fecha de entrega y todo llegando ordenado a su WhatsApp.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/pastelerias/suss-dulces/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article>
+
+<h2>Sin teléfono · Instagram DM</h2>
+
+
+<h2>Fuera de juego</h2>
+
+
+<div class="note">
+  <b>Horario:</b> 10:00–12:00 o 15:00–17:00. Nunca en peak.<br>
+  <b>Un mensaje por local.</b> Si no responden, esperar 48 horas.<br>
+  <b>El link del catálogo va dentro del mensaje.</b> No hace falta enviar nada más.
+  <br><button class="reset" onclick="reiniciar()">Reiniciar contador</button>
+</div>
+
+</div>
+<script>
+const KEY="envios_pastelerias";
+let done=JSON.parse(localStorage.getItem(KEY)||"[]");
+function pintar(){
+  let n=0;
+  document.querySelectorAll(".card").forEach(c=>{
+    const on=done.includes(c.dataset.k);
+    c.classList.toggle("done",on);
+    if(on && c.querySelector(".go").tagName==="A") n++;
+  });
+  document.getElementById("hechos").textContent=n;
+}
+document.querySelectorAll(".card .go").forEach(b=>{
+  if(b.tagName==="A") b.addEventListener("click",()=>{
+    const k=b.closest(".card").dataset.k;
+    if(!done.includes(k)){done.push(k);localStorage.setItem(KEY,JSON.stringify(done));}
+    setTimeout(pintar,400);
+  });
+});
+function ver(btn){
+  const p=btn.closest(".card").querySelector(".preview");
+  p.classList.toggle("on");
+  btn.textContent=p.classList.contains("on")?"Ocultar":"Ver mensaje";
+}
+function copiar(btn){
+  const d=JSON.parse(btn.closest(".card").dataset.d);
+  navigator.clipboard.writeText(d.msg).then(()=>{
+    const o=btn.textContent;btn.textContent="Copiado ✓";
+    if(!done.includes(d.slug)){done.push(d.slug);localStorage.setItem(KEY,JSON.stringify(done));pintar();}
+    setTimeout(()=>btn.textContent=o,1700);
+  });
+}
+function reiniciar(){
+  done=[];localStorage.removeItem(KEY);pintar();
+}
+pintar();
+</script>
+</body></html>
