@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Panel · Veterinarias</title>
+<meta name="theme-color" content="#08090c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:Inter,system-ui,sans-serif;background:#08090c;color:#eef1f5;margin:0;
+  padding:0 16px 70px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:640px;margin:0 auto}
+header{position:sticky;top:0;z-index:10;background:rgba(8,9,12,.93);backdrop-filter:blur(14px);
+  padding:16px 0 12px;border-bottom:1px solid #1c2028;margin-bottom:18px}
+.k{font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#5f6673;margin-bottom:7px}
+h1{font-size:23px;margin:0;letter-spacing:-.02em}
+.count{font-size:12px;color:#8b93a1;margin-top:5px}
+.count b{color:#3ddc84}
+h2{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#6b7280;margin:26px 0 10px;font-weight:600}
+.card{background:#111318;border:1px solid #1f232c;border-radius:16px;padding:16px;margin-bottom:10px;transition:.2s}
+.card.done{opacity:.45}.card.done .tick{opacity:1;transform:scale(1)}
+.card.off{opacity:.55;border-style:dashed;background:#0d0f13}
+.row1{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.tick{width:22px;height:22px;border-radius:50%;background:#1d3a28;color:#3ddc84;font-size:12px;
+  display:grid;place-items:center;opacity:0;transform:scale(.6);transition:.2s;flex:none;font-weight:700}
+.n{font-weight:700;font-size:15.5px;letter-spacing:-.01em}
+.m{font-size:11.5px;color:#8b93a1;margin-top:2px}
+.go{display:block;text-align:center;margin-top:13px;padding:13px;border-radius:11px;background:#25d366;
+  color:#04140c;font-size:14px;font-weight:800;text-decoration:none;border:0;width:100%;
+  font-family:inherit;cursor:pointer}
+.go:active{transform:scale(.99)}
+.go.ghost{background:#1d222c;color:#c9cfda;font-weight:600;font-size:13px}
+.sub{display:flex;gap:16px;margin-top:11px;font-size:11.5px}
+.sub a,.sub button{color:#5f6673;text-decoration:none;background:none;border:0;padding:0;
+  font-family:inherit;font-size:11.5px;cursor:pointer}
+.sub button:hover,.sub a:hover{color:#8b93a1}
+.preview{display:none;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,monospace;
+  font-size:11px;line-height:1.65;color:#8b93a1;background:#0b0d11;border:1px solid #1c2028;
+  border-radius:10px;padding:12px;margin:11px 0 0;overflow-x:auto}
+.preview.on{display:block}
+.note{font-size:11px;color:#4c525d;line-height:1.9;margin-top:28px;border-top:1px solid #1c2028;padding-top:16px}
+.note b{color:#6b7280}
+.reset{background:none;border:0;color:#4c525d;font-size:10.5px;text-decoration:underline;
+  padding:0;margin-top:14px;font-family:inherit;cursor:pointer}
+</style></head>
+<body><div class="wrap">
+
+<header>
+  <div class="k">Salida a terreno</div>
+  <h1>Ventas · Santiago</h1>
+  <div class="count"><b id="hechos">0</b> de 7 enviados por WhatsApp</div>
+</header>
+
+<h2>Con WhatsApp · prioridad A primero · toque y se abre</h2>
+<article class="card" data-k="veterinaria-tierra-animal" data-d="{&quot;slug&quot;: &quot;veterinaria-tierra-animal&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, trabajo con locales de Santiago.\n\nVi *Cl\u00ednica Veterinaria Tierra Animal* y no encontr\u00e9 d\u00f3nde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.\n\nLe arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: alimentos, farmacia, aseo y servicios cl\u00ednicos con precio, y el pedido llegando ordenado a su WhatsApp.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-tierra-animal/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Cl\u00ednica Veterinaria Tierra Animal&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Clínica Veterinaria Tierra Animal</div>
+      <div class="m">Clínica veterinaria · ★ 4.7 · A: sin reserva online</div>
+      <div class="m">Walker Martínez 2051 loc. 13, La Florida</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <a class="go" href="https://wa.me/56941445562?text=Hola%2C%20buenas%20tardes.%20Soy%20Rub%C3%A9n%2C%20trabajo%20con%20locales%20de%20Santiago.%0A%0AVi%20%2ACl%C3%ADnica%20Veterinaria%20Tierra%20Animal%2A%20y%20no%20encontr%C3%A9%20d%C3%B3nde%20ver%20sus%20productos%20y%20servicios%20con%20precio%2C%20ni%20pedir%20hora%20sin%20escribir%20mensaje%20por%20mensaje.%0A%0ALe%20arm%C3%A9%20una%20muestra%20de%20c%C3%B3mo%20se%20ver%C3%ADa%3A%20alimentos%2C%20farmacia%2C%20aseo%20y%20servicios%20cl%C3%ADnicos%20con%20precio%2C%20y%20el%20pedido%20llegando%20ordenado%20a%20su%20WhatsApp.%0A%0AM%C3%ADrela%20ac%C3%A1%3A%20https%3A//rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-tierra-animal/%0A%0ASi%20le%20sirve%2C%20paso%205%20minutos%20y%20le%20explico.%20Si%20no%2C%20no%20le%20quito%20m%C3%A1s%20tiempo." target="_blank" rel="noopener">Enviar por WhatsApp</a>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-tierra-animal/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, trabajo con locales de Santiago.
+
+Vi *Clínica Veterinaria Tierra Animal* y no encontré dónde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.
+
+Le armé una muestra de cómo se vería: alimentos, farmacia, aseo y servicios clínicos con precio, y el pedido llegando ordenado a su WhatsApp.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-tierra-animal/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article><article class="card" data-k="club-animal" data-d="{&quot;slug&quot;: &quot;club-animal&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, trabajo con locales de Santiago.\n\nVi *Club Animal* y no encontr\u00e9 d\u00f3nde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.\n\nLe arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: alimentos, farmacia, aseo y servicios cl\u00ednicos con precio, y el pedido llegando ordenado a su WhatsApp.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/veterinarias/club-animal/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Club Animal&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Club Animal</div>
+      <div class="m">Veterinaria y pet shop · ★ 3.8 · ya reserva en línea (baja prioridad)</div>
+      <div class="m">Av. Los Presidentes, Ñuña</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <a class="go" href="https://wa.me/56982945231?text=Hola%2C%20buenas%20tardes.%20Soy%20Rub%C3%A9n%2C%20trabajo%20con%20locales%20de%20Santiago.%0A%0AVi%20%2AClub%20Animal%2A%20y%20no%20encontr%C3%A9%20d%C3%B3nde%20ver%20sus%20productos%20y%20servicios%20con%20precio%2C%20ni%20pedir%20hora%20sin%20escribir%20mensaje%20por%20mensaje.%0A%0ALe%20arm%C3%A9%20una%20muestra%20de%20c%C3%B3mo%20se%20ver%C3%ADa%3A%20alimentos%2C%20farmacia%2C%20aseo%20y%20servicios%20cl%C3%ADnicos%20con%20precio%2C%20y%20el%20pedido%20llegando%20ordenado%20a%20su%20WhatsApp.%0A%0AM%C3%ADrela%20ac%C3%A1%3A%20https%3A//rsilvaocl.github.io/resto-demos/veterinarias/club-animal/%0A%0ASi%20le%20sirve%2C%20paso%205%20minutos%20y%20le%20explico.%20Si%20no%2C%20no%20le%20quito%20m%C3%A1s%20tiempo." target="_blank" rel="noopener">Enviar por WhatsApp</a>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/veterinarias/club-animal/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, trabajo con locales de Santiago.
+
+Vi *Club Animal* y no encontré dónde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.
+
+Le armé una muestra de cómo se vería: alimentos, farmacia, aseo y servicios clínicos con precio, y el pedido llegando ordenado a su WhatsApp.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/veterinarias/club-animal/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article><article class="card" data-k="helpvet-clinica-veterinaria" data-d="{&quot;slug&quot;: &quot;helpvet-clinica-veterinaria&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, trabajo con locales de Santiago.\n\nVi *Helpvet Cl\u00ednica Veterinaria* y no encontr\u00e9 d\u00f3nde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.\n\nLe arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: alimentos, farmacia, aseo y servicios cl\u00ednicos con precio, y el pedido llegando ordenado a su WhatsApp.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/veterinarias/helpvet-clinica-veterinaria/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Helpvet Cl\u00ednica Veterinaria&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Helpvet Clínica Veterinaria</div>
+      <div class="m">Clínica veterinaria · ★ 5.0 · ya reserva en línea (baja prioridad)</div>
+      <div class="m">Av. Tobalaba 13949, Peñalolén</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <a class="go" href="https://wa.me/56953578884?text=Hola%2C%20buenas%20tardes.%20Soy%20Rub%C3%A9n%2C%20trabajo%20con%20locales%20de%20Santiago.%0A%0AVi%20%2AHelpvet%20Cl%C3%ADnica%20Veterinaria%2A%20y%20no%20encontr%C3%A9%20d%C3%B3nde%20ver%20sus%20productos%20y%20servicios%20con%20precio%2C%20ni%20pedir%20hora%20sin%20escribir%20mensaje%20por%20mensaje.%0A%0ALe%20arm%C3%A9%20una%20muestra%20de%20c%C3%B3mo%20se%20ver%C3%ADa%3A%20alimentos%2C%20farmacia%2C%20aseo%20y%20servicios%20cl%C3%ADnicos%20con%20precio%2C%20y%20el%20pedido%20llegando%20ordenado%20a%20su%20WhatsApp.%0A%0AM%C3%ADrela%20ac%C3%A1%3A%20https%3A//rsilvaocl.github.io/resto-demos/veterinarias/helpvet-clinica-veterinaria/%0A%0ASi%20le%20sirve%2C%20paso%205%20minutos%20y%20le%20explico.%20Si%20no%2C%20no%20le%20quito%20m%C3%A1s%20tiempo." target="_blank" rel="noopener">Enviar por WhatsApp</a>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/veterinarias/helpvet-clinica-veterinaria/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, trabajo con locales de Santiago.
+
+Vi *Helpvet Clínica Veterinaria* y no encontré dónde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.
+
+Le armé una muestra de cómo se vería: alimentos, farmacia, aseo y servicios clínicos con precio, y el pedido llegando ordenado a su WhatsApp.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/veterinarias/helpvet-clinica-veterinaria/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article><article class="card" data-k="veterinaria-las-pircas" data-d="{&quot;slug&quot;: &quot;veterinaria-las-pircas&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, trabajo con locales de Santiago.\n\nVi *Cl\u00ednica Veterinaria Las Pircas* y no encontr\u00e9 d\u00f3nde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.\n\nLe arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: alimentos, farmacia, aseo y servicios cl\u00ednicos con precio, y el pedido llegando ordenado a su WhatsApp.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-las-pircas/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Cl\u00ednica Veterinaria Las Pircas&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Clínica Veterinaria Las Pircas</div>
+      <div class="m">Clínica veterinaria · ★ 4.4 · ya reserva en línea (baja prioridad)</div>
+      <div class="m">Av. Las Perdices 2990, Peñalolén</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <a class="go" href="https://wa.me/56989391912?text=Hola%2C%20buenas%20tardes.%20Soy%20Rub%C3%A9n%2C%20trabajo%20con%20locales%20de%20Santiago.%0A%0AVi%20%2ACl%C3%ADnica%20Veterinaria%20Las%20Pircas%2A%20y%20no%20encontr%C3%A9%20d%C3%B3nde%20ver%20sus%20productos%20y%20servicios%20con%20precio%2C%20ni%20pedir%20hora%20sin%20escribir%20mensaje%20por%20mensaje.%0A%0ALe%20arm%C3%A9%20una%20muestra%20de%20c%C3%B3mo%20se%20ver%C3%ADa%3A%20alimentos%2C%20farmacia%2C%20aseo%20y%20servicios%20cl%C3%ADnicos%20con%20precio%2C%20y%20el%20pedido%20llegando%20ordenado%20a%20su%20WhatsApp.%0A%0AM%C3%ADrela%20ac%C3%A1%3A%20https%3A//rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-las-pircas/%0A%0ASi%20le%20sirve%2C%20paso%205%20minutos%20y%20le%20explico.%20Si%20no%2C%20no%20le%20quito%20m%C3%A1s%20tiempo." target="_blank" rel="noopener">Enviar por WhatsApp</a>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-las-pircas/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, trabajo con locales de Santiago.
+
+Vi *Clínica Veterinaria Las Pircas* y no encontré dónde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.
+
+Le armé una muestra de cómo se vería: alimentos, farmacia, aseo y servicios clínicos con precio, y el pedido llegando ordenado a su WhatsApp.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-las-pircas/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article><article class="card" data-k="medical-fauna-hospital-veterinario" data-d="{&quot;slug&quot;: &quot;medical-fauna-hospital-veterinario&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, trabajo con locales de Santiago.\n\nVi *Medical Fauna Hospital Veterinario* y no encontr\u00e9 d\u00f3nde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.\n\nLe arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: alimentos, farmacia, aseo y servicios cl\u00ednicos con precio, y el pedido llegando ordenado a su WhatsApp.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/veterinarias/medical-fauna-hospital-veterinario/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Medical Fauna Hospital Veterinario&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Medical Fauna Hospital Veterinario</div>
+      <div class="m">Hospital veterinario · ★ 3.4 · ya reserva en línea (baja prioridad)</div>
+      <div class="m">Enrique Olivares 1530, Macul</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <a class="go" href="https://wa.me/56933392868?text=Hola%2C%20buenas%20tardes.%20Soy%20Rub%C3%A9n%2C%20trabajo%20con%20locales%20de%20Santiago.%0A%0AVi%20%2AMedical%20Fauna%20Hospital%20Veterinario%2A%20y%20no%20encontr%C3%A9%20d%C3%B3nde%20ver%20sus%20productos%20y%20servicios%20con%20precio%2C%20ni%20pedir%20hora%20sin%20escribir%20mensaje%20por%20mensaje.%0A%0ALe%20arm%C3%A9%20una%20muestra%20de%20c%C3%B3mo%20se%20ver%C3%ADa%3A%20alimentos%2C%20farmacia%2C%20aseo%20y%20servicios%20cl%C3%ADnicos%20con%20precio%2C%20y%20el%20pedido%20llegando%20ordenado%20a%20su%20WhatsApp.%0A%0AM%C3%ADrela%20ac%C3%A1%3A%20https%3A//rsilvaocl.github.io/resto-demos/veterinarias/medical-fauna-hospital-veterinario/%0A%0ASi%20le%20sirve%2C%20paso%205%20minutos%20y%20le%20explico.%20Si%20no%2C%20no%20le%20quito%20m%C3%A1s%20tiempo." target="_blank" rel="noopener">Enviar por WhatsApp</a>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/veterinarias/medical-fauna-hospital-veterinario/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, trabajo con locales de Santiago.
+
+Vi *Medical Fauna Hospital Veterinario* y no encontré dónde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.
+
+Le armé una muestra de cómo se vería: alimentos, farmacia, aseo y servicios clínicos con precio, y el pedido llegando ordenado a su WhatsApp.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/veterinarias/medical-fauna-hospital-veterinario/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article><article class="card" data-k="pet-life" data-d="{&quot;slug&quot;: &quot;pet-life&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, trabajo con locales de Santiago.\n\nVi *Veterinaria Pet Life* y no encontr\u00e9 d\u00f3nde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.\n\nLe arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: alimentos, farmacia, aseo y servicios cl\u00ednicos con precio, y el pedido llegando ordenado a su WhatsApp.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/veterinarias/pet-life/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Veterinaria Pet Life&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Veterinaria Pet Life</div>
+      <div class="m">Veterinaria y pet shop · ★ 4.7 · ya reserva en línea (baja prioridad)</div>
+      <div class="m">Av. Macul 4676, Macul</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <a class="go" href="https://wa.me/56987528794?text=Hola%2C%20buenas%20tardes.%20Soy%20Rub%C3%A9n%2C%20trabajo%20con%20locales%20de%20Santiago.%0A%0AVi%20%2AVeterinaria%20Pet%20Life%2A%20y%20no%20encontr%C3%A9%20d%C3%B3nde%20ver%20sus%20productos%20y%20servicios%20con%20precio%2C%20ni%20pedir%20hora%20sin%20escribir%20mensaje%20por%20mensaje.%0A%0ALe%20arm%C3%A9%20una%20muestra%20de%20c%C3%B3mo%20se%20ver%C3%ADa%3A%20alimentos%2C%20farmacia%2C%20aseo%20y%20servicios%20cl%C3%ADnicos%20con%20precio%2C%20y%20el%20pedido%20llegando%20ordenado%20a%20su%20WhatsApp.%0A%0AM%C3%ADrela%20ac%C3%A1%3A%20https%3A//rsilvaocl.github.io/resto-demos/veterinarias/pet-life/%0A%0ASi%20le%20sirve%2C%20paso%205%20minutos%20y%20le%20explico.%20Si%20no%2C%20no%20le%20quito%20m%C3%A1s%20tiempo." target="_blank" rel="noopener">Enviar por WhatsApp</a>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/veterinarias/pet-life/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, trabajo con locales de Santiago.
+
+Vi *Veterinaria Pet Life* y no encontré dónde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.
+
+Le armé una muestra de cómo se vería: alimentos, farmacia, aseo y servicios clínicos con precio, y el pedido llegando ordenado a su WhatsApp.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/veterinarias/pet-life/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article><article class="card" data-k="animal-house" data-d="{&quot;slug&quot;: &quot;animal-house&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, trabajo con locales de Santiago.\n\nVi *Animal house* y no encontr\u00e9 d\u00f3nde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.\n\nLe arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: alimentos, farmacia, aseo y servicios cl\u00ednicos con precio, y el pedido llegando ordenado a su WhatsApp.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/veterinarias/animal-house/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Animal house&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Animal house</div>
+      <div class="m">Veterinaria y pet shop · ★ 4.7 · ya reserva en línea (baja prioridad)</div>
+      <div class="m">Benito Rebolledo 2957, Macul</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <a class="go" href="https://wa.me/56931814516?text=Hola%2C%20buenas%20tardes.%20Soy%20Rub%C3%A9n%2C%20trabajo%20con%20locales%20de%20Santiago.%0A%0AVi%20%2AAnimal%20house%2A%20y%20no%20encontr%C3%A9%20d%C3%B3nde%20ver%20sus%20productos%20y%20servicios%20con%20precio%2C%20ni%20pedir%20hora%20sin%20escribir%20mensaje%20por%20mensaje.%0A%0ALe%20arm%C3%A9%20una%20muestra%20de%20c%C3%B3mo%20se%20ver%C3%ADa%3A%20alimentos%2C%20farmacia%2C%20aseo%20y%20servicios%20cl%C3%ADnicos%20con%20precio%2C%20y%20el%20pedido%20llegando%20ordenado%20a%20su%20WhatsApp.%0A%0AM%C3%ADrela%20ac%C3%A1%3A%20https%3A//rsilvaocl.github.io/resto-demos/veterinarias/animal-house/%0A%0ASi%20le%20sirve%2C%20paso%205%20minutos%20y%20le%20explico.%20Si%20no%2C%20no%20le%20quito%20m%C3%A1s%20tiempo." target="_blank" rel="noopener">Enviar por WhatsApp</a>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/veterinarias/animal-house/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, trabajo con locales de Santiago.
+
+Vi *Animal house* y no encontré dónde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.
+
+Le armé una muestra de cómo se vería: alimentos, farmacia, aseo y servicios clínicos con precio, y el pedido llegando ordenado a su WhatsApp.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/veterinarias/animal-house/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article>
+
+<h2>Sin WhatsApp · copiar mensaje (teléfono fijo)</h2>
+<article class="card" data-k="veterinaria-antupiren" data-d="{&quot;slug&quot;: &quot;veterinaria-antupiren&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, trabajo con locales de Santiago.\n\nVi *Cl\u00ednica Veterinaria Antupir\u00e9n* y no encontr\u00e9 d\u00f3nde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.\n\nLe arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: alimentos, farmacia, aseo y servicios cl\u00ednicos con precio, y el pedido llegando ordenado a su WhatsApp.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-antupiren/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Cl\u00ednica Veterinaria Antupir\u00e9n&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Clínica Veterinaria Antupirén</div>
+      <div class="m">Clínica veterinaria 24/7 · sin WhatsApp (fijo)</div>
+      <div class="m">Butacura 8789, Peñalolén</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <button class="go ghost" onclick="copiar(this)">Copiar mensaje</button>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-antupiren/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, trabajo con locales de Santiago.
+
+Vi *Clínica Veterinaria Antupirén* y no encontré dónde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.
+
+Le armé una muestra de cómo se vería: alimentos, farmacia, aseo y servicios clínicos con precio, y el pedido llegando ordenado a su WhatsApp.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-antupiren/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article><article class="card" data-k="veterinario-alto-la-florida" data-d="{&quot;slug&quot;: &quot;veterinario-alto-la-florida&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, trabajo con locales de Santiago.\n\nVi *Hospital Veterinario Alto la Florida* y no encontr\u00e9 d\u00f3nde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.\n\nLe arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: alimentos, farmacia, aseo y servicios cl\u00ednicos con precio, y el pedido llegando ordenado a su WhatsApp.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/veterinarias/veterinario-alto-la-florida/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Hospital Veterinario Alto la Florida&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Hospital Veterinario Alto la Florida</div>
+      <div class="m">Hospital veterinario 24/7 · sin WhatsApp (fijo)</div>
+      <div class="m">Av. La Florida, La Florida</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <button class="go ghost" onclick="copiar(this)">Copiar mensaje</button>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/veterinarias/veterinario-alto-la-florida/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, trabajo con locales de Santiago.
+
+Vi *Hospital Veterinario Alto la Florida* y no encontré dónde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.
+
+Le armé una muestra de cómo se vería: alimentos, farmacia, aseo y servicios clínicos con precio, y el pedido llegando ordenado a su WhatsApp.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/veterinarias/veterinario-alto-la-florida/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article><article class="card" data-k="veterinaria-san-agustin" data-d="{&quot;slug&quot;: &quot;veterinaria-san-agustin&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, trabajo con locales de Santiago.\n\nVi *Cl\u00ednica Veterinaria San Agust\u00edn* y no encontr\u00e9 d\u00f3nde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.\n\nLe arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: alimentos, farmacia, aseo y servicios cl\u00ednicos con precio, y el pedido llegando ordenado a su WhatsApp.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-san-agustin/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Cl\u00ednica Veterinaria San Agust\u00edn&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Clínica Veterinaria San Agustín</div>
+      <div class="m">Clínica veterinaria · sin WhatsApp (fijo)</div>
+      <div class="m">Av. Vicuña Mackenna 12551, La Florida</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <button class="go ghost" onclick="copiar(this)">Copiar mensaje</button>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-san-agustin/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, trabajo con locales de Santiago.
+
+Vi *Clínica Veterinaria San Agustín* y no encontré dónde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.
+
+Le armé una muestra de cómo se vería: alimentos, farmacia, aseo y servicios clínicos con precio, y el pedido llegando ordenado a su WhatsApp.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-san-agustin/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article><article class="card" data-k="veterinaria-lawen" data-d="{&quot;slug&quot;: &quot;veterinaria-lawen&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, trabajo con locales de Santiago.\n\nVi *Cl\u00ednica Veterinaria Lawen* y no encontr\u00e9 d\u00f3nde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.\n\nLe arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: alimentos, farmacia, aseo y servicios cl\u00ednicos con precio, y el pedido llegando ordenado a su WhatsApp.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-lawen/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Cl\u00ednica Veterinaria Lawen&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Clínica Veterinaria Lawen</div>
+      <div class="m">Clínica veterinaria · sin WhatsApp (fijo)</div>
+      <div class="m">Sta. Aurelia 7605, La Florida</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <button class="go ghost" onclick="copiar(this)">Copiar mensaje</button>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-lawen/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, trabajo con locales de Santiago.
+
+Vi *Clínica Veterinaria Lawen* y no encontré dónde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.
+
+Le armé una muestra de cómo se vería: alimentos, farmacia, aseo y servicios clínicos con precio, y el pedido llegando ordenado a su WhatsApp.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-lawen/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article><article class="card" data-k="veterinaria-el-valle" data-d="{&quot;slug&quot;: &quot;veterinaria-el-valle&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, trabajo con locales de Santiago.\n\nVi *Cl\u00ednica Veterinaria El Valle* y no encontr\u00e9 d\u00f3nde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.\n\nLe arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: alimentos, farmacia, aseo y servicios cl\u00ednicos con precio, y el pedido llegando ordenado a su WhatsApp.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-el-valle/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Cl\u00ednica Veterinaria El Valle&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Clínica Veterinaria El Valle</div>
+      <div class="m">Clínica veterinaria · sin WhatsApp (fijo)</div>
+      <div class="m">Av. Consistorial 1339, Ñuña</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <button class="go ghost" onclick="copiar(this)">Copiar mensaje</button>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-el-valle/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, trabajo con locales de Santiago.
+
+Vi *Clínica Veterinaria El Valle* y no encontré dónde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.
+
+Le armé una muestra de cómo se vería: alimentos, farmacia, aseo y servicios clínicos con precio, y el pedido llegando ordenado a su WhatsApp.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-el-valle/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article><article class="card" data-k="el-roble-penalolen" data-d="{&quot;slug&quot;: &quot;el-roble-penalolen&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, trabajo con locales de Santiago.\n\nVi *Veterinaria el Roble Pe\u00f1alolen* y no encontr\u00e9 d\u00f3nde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.\n\nLe arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: alimentos, farmacia, aseo y servicios cl\u00ednicos con precio, y el pedido llegando ordenado a su WhatsApp.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/veterinarias/el-roble-penalolen/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Veterinaria el Roble Pe\u00f1alolen&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Veterinaria el Roble Peñalolen</div>
+      <div class="m">Veterinaria de barrio · sin WhatsApp (fijo)</div>
+      <div class="m">Av. Consistorial, Peñalolén</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <button class="go ghost" onclick="copiar(this)">Copiar mensaje</button>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/veterinarias/el-roble-penalolen/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, trabajo con locales de Santiago.
+
+Vi *Veterinaria el Roble Peñalolen* y no encontré dónde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.
+
+Le armé una muestra de cómo se vería: alimentos, farmacia, aseo y servicios clínicos con precio, y el pedido llegando ordenado a su WhatsApp.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/veterinarias/el-roble-penalolen/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article><article class="card" data-k="veterinaria-masquevet" data-d="{&quot;slug&quot;: &quot;veterinaria-masquevet&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, trabajo con locales de Santiago.\n\nVi *Cl\u00ednica Veterinaria M\u00e1sQueVet* y no encontr\u00e9 d\u00f3nde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.\n\nLe arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: alimentos, farmacia, aseo y servicios cl\u00ednicos con precio, y el pedido llegando ordenado a su WhatsApp.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-masquevet/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Cl\u00ednica Veterinaria M\u00e1sQueVet&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Clínica Veterinaria MásQueVet</div>
+      <div class="m">Clínica veterinaria · sin WhatsApp (fijo)</div>
+      <div class="m">Peñalolén, Santiago</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <button class="go ghost" onclick="copiar(this)">Copiar mensaje</button>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-masquevet/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, trabajo con locales de Santiago.
+
+Vi *Clínica Veterinaria MásQueVet* y no encontré dónde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.
+
+Le armé una muestra de cómo se vería: alimentos, farmacia, aseo y servicios clínicos con precio, y el pedido llegando ordenado a su WhatsApp.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-masquevet/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article><article class="card" data-k="veterinaria-san-martin-la-florida" data-d="{&quot;slug&quot;: &quot;veterinaria-san-martin-la-florida&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, trabajo con locales de Santiago.\n\nVi *Cl\u00ednica Veterinaria San Mart\u00edn - La Florida* y no encontr\u00e9 d\u00f3nde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.\n\nLe arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: alimentos, farmacia, aseo y servicios cl\u00ednicos con precio, y el pedido llegando ordenado a su WhatsApp.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-san-martin-la-florida/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Cl\u00ednica Veterinaria San Mart\u00edn - La Florida&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Clínica Veterinaria San Martín - La Florida</div>
+      <div class="m">Clínica veterinaria · sin WhatsApp (fijo)</div>
+      <div class="m">La Florida, Santiago</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <button class="go ghost" onclick="copiar(this)">Copiar mensaje</button>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-san-martin-la-florida/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, trabajo con locales de Santiago.
+
+Vi *Clínica Veterinaria San Martín - La Florida* y no encontré dónde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.
+
+Le armé una muestra de cómo se vería: alimentos, farmacia, aseo y servicios clínicos con precio, y el pedido llegando ordenado a su WhatsApp.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-san-martin-la-florida/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article><article class="card" data-k="veterinaria-k-nino" data-d="{&quot;slug&quot;: &quot;veterinaria-k-nino&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, trabajo con locales de Santiago.\n\nVi *Cl\u00ednica Veterinaria K-Nino* y no encontr\u00e9 d\u00f3nde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.\n\nLe arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: alimentos, farmacia, aseo y servicios cl\u00ednicos con precio, y el pedido llegando ordenado a su WhatsApp.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-k-nino/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Cl\u00ednica Veterinaria K-Nino&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Clínica Veterinaria K-Nino</div>
+      <div class="m">Veterinaria para gatos · sin WhatsApp (fijo)</div>
+      <div class="m">Las Margaritas 1694, La Florida</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <button class="go ghost" onclick="copiar(this)">Copiar mensaje</button>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-k-nino/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, trabajo con locales de Santiago.
+
+Vi *Clínica Veterinaria K-Nino* y no encontré dónde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.
+
+Le armé una muestra de cómo se vería: alimentos, farmacia, aseo y servicios clínicos con precio, y el pedido llegando ordenado a su WhatsApp.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-k-nino/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article><article class="card" data-k="veterinaria-macul" data-d="{&quot;slug&quot;: &quot;veterinaria-macul&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, trabajo con locales de Santiago.\n\nVi *Cl\u00ednica Veterinaria Macul* y no encontr\u00e9 d\u00f3nde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.\n\nLe arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: alimentos, farmacia, aseo y servicios cl\u00ednicos con precio, y el pedido llegando ordenado a su WhatsApp.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-macul/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Cl\u00ednica Veterinaria Macul&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Clínica Veterinaria Macul</div>
+      <div class="m">Veterinaria de barrio · sin WhatsApp (fijo)</div>
+      <div class="m">Av. José Pedro Alessandri 1799, Macul</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <button class="go ghost" onclick="copiar(this)">Copiar mensaje</button>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-macul/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, trabajo con locales de Santiago.
+
+Vi *Clínica Veterinaria Macul* y no encontré dónde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.
+
+Le armé una muestra de cómo se vería: alimentos, farmacia, aseo y servicios clínicos con precio, y el pedido llegando ordenado a su WhatsApp.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-macul/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article><article class="card" data-k="veterinaria-alto-macul" data-d="{&quot;slug&quot;: &quot;veterinaria-alto-macul&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, trabajo con locales de Santiago.\n\nVi *Cl\u00ednica Veterinaria Alto Macul* y no encontr\u00e9 d\u00f3nde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.\n\nLe arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: alimentos, farmacia, aseo y servicios cl\u00ednicos con precio, y el pedido llegando ordenado a su WhatsApp.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-alto-macul/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Cl\u00ednica Veterinaria Alto Macul&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Clínica Veterinaria Alto Macul</div>
+      <div class="m">Clínica veterinaria · sin WhatsApp (fijo)</div>
+      <div class="m">Av. Macul 4370, Macul</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <button class="go ghost" onclick="copiar(this)">Copiar mensaje</button>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-alto-macul/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, trabajo con locales de Santiago.
+
+Vi *Clínica Veterinaria Alto Macul* y no encontré dónde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.
+
+Le armé una muestra de cómo se vería: alimentos, farmacia, aseo y servicios clínicos con precio, y el pedido llegando ordenado a su WhatsApp.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-alto-macul/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article><article class="card" data-k="veterinaria-nativa" data-d="{&quot;slug&quot;: &quot;veterinaria-nativa&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, trabajo con locales de Santiago.\n\nVi *Cl\u00ednica Veterinaria Nativa* y no encontr\u00e9 d\u00f3nde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.\n\nLe arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: alimentos, farmacia, aseo y servicios cl\u00ednicos con precio, y el pedido llegando ordenado a su WhatsApp.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-nativa/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Cl\u00ednica Veterinaria Nativa&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Clínica Veterinaria Nativa</div>
+      <div class="m">Clínica veterinaria · sin WhatsApp (fijo)</div>
+      <div class="m">Av. Macul 4919, Macul</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <button class="go ghost" onclick="copiar(this)">Copiar mensaje</button>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-nativa/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, trabajo con locales de Santiago.
+
+Vi *Clínica Veterinaria Nativa* y no encontré dónde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.
+
+Le armé una muestra de cómo se vería: alimentos, farmacia, aseo y servicios clínicos con precio, y el pedido llegando ordenado a su WhatsApp.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-nativa/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article><article class="card" data-k="veterinaria-bon-amie" data-d="{&quot;slug&quot;: &quot;veterinaria-bon-amie&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, trabajo con locales de Santiago.\n\nVi *Cl\u00ednica Veterinaria Bon Amie* y no encontr\u00e9 d\u00f3nde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.\n\nLe arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: alimentos, farmacia, aseo y servicios cl\u00ednicos con precio, y el pedido llegando ordenado a su WhatsApp.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-bon-amie/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;Cl\u00ednica Veterinaria Bon Amie&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">Clínica Veterinaria Bon Amie</div>
+      <div class="m">Veterinaria y pet shop · sin WhatsApp (fijo)</div>
+      <div class="m">Av. Macul 2506, Macul</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <button class="go ghost" onclick="copiar(this)">Copiar mensaje</button>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-bon-amie/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, trabajo con locales de Santiago.
+
+Vi *Clínica Veterinaria Bon Amie* y no encontré dónde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.
+
+Le armé una muestra de cómo se vería: alimentos, farmacia, aseo y servicios clínicos con precio, y el pedido llegando ordenado a su WhatsApp.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/veterinarias/veterinaria-bon-amie/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article><article class="card" data-k="ramon-cruz" data-d="{&quot;slug&quot;: &quot;ramon-cruz&quot;, &quot;msg&quot;: &quot;Hola, buenas tardes. Soy Rub\u00e9n, trabajo con locales de Santiago.\n\nVi *VETERINARIA RAMON CRUZ* y no encontr\u00e9 d\u00f3nde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.\n\nLe arm\u00e9 una muestra de c\u00f3mo se ver\u00eda: alimentos, farmacia, aseo y servicios cl\u00ednicos con precio, y el pedido llegando ordenado a su WhatsApp.\n\nM\u00edrela ac\u00e1: https://rsilvaocl.github.io/resto-demos/veterinarias/ramon-cruz/\n\nSi le sirve, paso 5 minutos y le explico. Si no, no le quito m\u00e1s tiempo.&quot;, &quot;nombre&quot;: &quot;VETERINARIA RAMON CRUZ&quot;}">
+  <div class="row1">
+    <div>
+      <div class="n">VETERINARIA RAMON CRUZ</div>
+      <div class="m">Veterinaria de barrio · sin WhatsApp (fijo)</div>
+      <div class="m">Ramón Cruz Montt 1902, Macul</div>
+    </div>
+    <span class="tick" aria-hidden="true">✓</span>
+  </div>
+  <button class="go ghost" onclick="copiar(this)">Copiar mensaje</button>
+  <div class="sub">
+    <a href="https://rsilvaocl.github.io/resto-demos/veterinarias/ramon-cruz/" target="_blank" rel="noopener">Ver catálogo</a>
+    <button onclick="ver(this)">Ver mensaje</button>
+  </div>
+  <pre class="preview">Hola, buenas tardes. Soy Rubén, trabajo con locales de Santiago.
+
+Vi *VETERINARIA RAMON CRUZ* y no encontré dónde ver sus productos y servicios con precio, ni pedir hora sin escribir mensaje por mensaje.
+
+Le armé una muestra de cómo se vería: alimentos, farmacia, aseo y servicios clínicos con precio, y el pedido llegando ordenado a su WhatsApp.
+
+Mírela acá: https://rsilvaocl.github.io/resto-demos/veterinarias/ramon-cruz/
+
+Si le sirve, paso 5 minutos y le explico. Si no, no le quito más tiempo.</pre>
+</article>
+
+<h2>Fuera de juego</h2>
+
+
+<div class="note">
+  <b>Horario:</b> 10:00–12:00 o 15:00–17:00. Nunca en peak.<br>
+  <b>Un mensaje por local.</b> Si no responden, esperar 48 horas.<br>
+  <b>El link del catálogo va dentro del mensaje.</b> No hace falta enviar nada más.
+  <br><button class="reset" onclick="reiniciar()">Reiniciar contador</button>
+</div>
+
+</div>
+<script>
+const KEY="envios_veterinarias";
+let done=JSON.parse(localStorage.getItem(KEY)||"[]");
+function pintar(){
+  let n=0;
+  document.querySelectorAll(".card").forEach(c=>{
+    const on=done.includes(c.dataset.k);
+    c.classList.toggle("done",on);
+    if(on && c.querySelector(".go").tagName==="A") n++;
+  });
+  document.getElementById("hechos").textContent=n;
+}
+document.querySelectorAll(".card .go").forEach(b=>{
+  if(b.tagName==="A") b.addEventListener("click",()=>{
+    const k=b.closest(".card").dataset.k;
+    if(!done.includes(k)){done.push(k);localStorage.setItem(KEY,JSON.stringify(done));}
+    setTimeout(pintar,400);
+  });
+});
+function ver(btn){
+  const p=btn.closest(".card").querySelector(".preview");
+  p.classList.toggle("on");
+  btn.textContent=p.classList.contains("on")?"Ocultar":"Ver mensaje";
+}
+function copiar(btn){
+  const d=JSON.parse(btn.closest(".card").dataset.d);
+  navigator.clipboard.writeText(d.msg).then(()=>{
+    const o=btn.textContent;btn.textContent="Copiado ✓";
+    if(!done.includes(d.slug)){done.push(d.slug);localStorage.setItem(KEY,JSON.stringify(done));pintar();}
+    setTimeout(()=>btn.textContent=o,1700);
+  });
+}
+function reiniciar(){
+  done=[];localStorage.removeItem(KEY);pintar();
+}
+pintar();
+</script>
+</body></html>

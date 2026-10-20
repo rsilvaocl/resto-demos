@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Panel · Clínica Veterinaria Antupirén</title>
+<style>
+body{font-family:Inter,system-ui,sans-serif;background:#0c0e12;color:#e9ecf1;margin:0;padding:22px;line-height:1.5}
+.wrap{max-width:720px;margin:0 auto}
+.kick{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#6b7280;margin-bottom:8px}
+h1{font-size:25px;margin:0 0 6px;font-weight:700;letter-spacing:-.02em}
+.sub{color:#8b93a1;font-size:13px;margin-bottom:26px}
+.box{background:#14171d;border:1px solid #232833;border-radius:16px;padding:16px;margin-bottom:14px}
+h2{font-size:10.5px;text-transform:uppercase;letter-spacing:.14em;color:#7c8494;margin:0 0 10px;font-weight:600}
+.row{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid #1e222b}
+.row:last-child{border:0}
+.row .n{flex:1;font-size:14px}
+input[type=number]{width:112px;background:#0c0e12;color:#e9ecf1;border:1px solid #2a303c;border-radius:9px;
+  padding:8px 10px;font-size:14px;text-align:right;font-family:inherit}
+button{background:#3b82f6;color:#fff;border:0;padding:12px 18px;border-radius:11px;font-weight:600;
+  font-size:14px;cursor:pointer;font-family:inherit}
+button.sec{background:#1d222c;color:#c9cfda}
+button:active{transform:scale(.98)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.ok{color:#34d399;font-size:13px;margin-top:12px;min-height:18px}
+</style></head><body><div class="wrap">
+<div class="kick">Panel del local</div>
+<h1>Clínica Veterinaria Antupirén</h1>
+<div class="sub">Cambie precios y disponibilidad sin depender de nadie.</div>
+<div id="app"></div>
+<div class="actions">
+  <button onclick="guardar()">Guardar cambios</button>
+  <button class="sec" onclick="exportar()">Descargar catálogo</button>
+  <button class="sec" onclick="location.href='index.html'">Ver catálogo</button>
+</div>
+<div class="ok" id="ok"></div>
+<script>
+const DATA = {"slug": "veterinaria-antupiren", "nombre": "Clínica Veterinaria Antupirén", "tipo": "Clínica veterinaria 24/7", "rating": "4.0", "direccion": "Butacura 8789, Peñalolén", "telefono": "", "wa_display": "", "minutos": "24/7", "prioridad": "A", "horarios": {"lun": [0, 24], "mar": [0, 24], "mie": [0, 24], "jue": [0, 24], "vie": [0, 24], "sab": [0, 24], "dom": [0, 24]}, "tema": {"bg": "#10120e", "card": "#1a1e15", "acento": "#8fae6b", "acento2": "#cfe0b3", "texto": "#f2f6ed", "fuente": "Archivo Black", "hero": "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=1400&q=70"}, "lema": "Atención veterinaria de barrio, con trato de casa", "categorias": [{"n": "Alimentos", "items": [{"n": "Alimento perro adulto 15 kg", "d": "Salmón o pollo, bolsa sellada", "p": 38990, "tag": "Más pedido"}, {"n": "Alimento gato esterilizado 7,5 kg", "d": "Control de peso, con taurina", "p": 32990}, {"n": "Alimento cachorro 10 kg", "d": "Crecimiento, DHA para desarrollo", "p": 34990}, {"n": "Comida húmeda gato (pack 12)", "d": "Atún y pollo en salsa", "p": 14990}, {"n": "Snack dental perro", "d": "Reduce sarro, unidad grande", "p": 6990, "tag": "Recomendado"}]}, {"n": "Farmacia", "items": [{"n": "Desparasitante interno", "d": "Tableta según peso, 1 dosis", "p": 9900, "tag": "Trimestral"}, {"n": "Antipulgas y garrapatas", "d": "Pipeta mensual, perro 10–20 kg", "p": 16990}, {"n": "Vitamina multivitamínica", "d": "Jarabe, 250 ml", "p": 8990}, {"n": "Suplemento articular", "d": "Colágeno y condroitina, 60 tabletas", "p": 18990}, {"n": "Antibiótico inyectable (con receta)", "d": "Venta con indicación veterinaria", "p": 12990}]}, {"n": "Aseo y accesorios", "items": [{"n": "Baño y corte", "d": "Incluye cepillado y limpieza de oídos", "p": 18990, "tag": "Servicio"}, {"n": "Baño antipulgas", "d": "Shampoo medicado, secado incluido", "p": 21990}, {"n": "Cepillado profundo", "d": "Perros de pelo largo", "p": 12990}, {"n": "Cama antimotines", "d": "Talla S–L, funda lavable", "p": 24990}, {"n": "Correa retráctil 5 m", "d": "Con freno, para perros hasta 50 kg", "p": 12990}]}, {"n": "Servicios clínicos", "items": [{"n": "Consulta veterinaria", "d": "Examen completo y control general", "p": 19900, "tag": "Turno"}, {"n": "Vacuna múltiple canina", "d": "Primera o refuerzo anual", "p": 17990}, {"n": "Vacuna triple felina", "d": "Refuerzo anual", "p": 16990}, {"n": "Vacuna antirrábica", "d": "Obligatoria, con certificado", "p": 14990, "tag": "Obligatoria"}, {"n": "Esterilización", "d": "Incluye prequirúrgico y control", "p": 149900}, {"n": "Limpieza dental", "d": "Con anestesia y control post", "p": 59990}, {"n": "Corte de uñas", "d": "Incluye revisión de patas", "p": 5990}]}]};
+const KEY = "admin_"+DATA.slug;
+const saved = JSON.parse(localStorage.getItem(KEY)||"null");
+if(saved){ DATA.categorias = saved; }
+document.getElementById("app").innerHTML = DATA.categorias.map((c,ci)=>`
+  <div class="box"><h2>${c.n}</h2>
+  ${c.items.map((it,ii)=>`<div class="row">
+      <span class="n">${it.n}</span>
+      <input type="number" value="${it.p}" step="100" onchange="setP(${ci},${ii},this.value)">
+    </div>`).join("")}</div>`).join("");
+function setP(ci,ii,v){ DATA.categorias[ci].items[ii].p = Number(v)||0; }
+function guardar(){
+  localStorage.setItem(KEY, JSON.stringify(DATA.categorias));
+  document.getElementById("ok").textContent = "Cambios guardados en este dispositivo ✓";
+}
+function exportar(){
+  const blob = new Blob([JSON.stringify(DATA,null,2)],{type:"application/json"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = DATA.slug + ".json"; a.click();
+}
+</script></div></body></html>
