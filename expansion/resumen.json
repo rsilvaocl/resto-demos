@@ -1,0 +1,18 @@
+{
+  "census": 100,
+  "candidates": 49,
+  "mobile": 19,
+  "classes": {
+    "A": 17,
+    "B": 32,
+    "C": 50,
+    "X": 1
+  },
+  "rubros": {
+    "pasteleria": 15,
+    "vivero": 7,
+    "ferreteria": 7,
+    "minimercado": 9,
+    "veterinaria": 11
+  }
+}
